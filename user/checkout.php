@@ -3,6 +3,36 @@ session_start();
 include 'helpers/authenticated.php';
 ?>
 
+<?php
+include 'database/database.php'; // adjust path as needed
+
+$cart_count = 0;
+
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+
+    // Get the cart ID
+    $stmt = $conn->prepare("SELECT id FROM carts WHERE user_id = ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $cart_result = $stmt->get_result();
+
+    if ($cart_row = $cart_result->fetch_assoc()) {
+        $cart_id = $cart_row['id'];
+
+        // Count total quantity from cart_items
+        $stmt_items = $conn->prepare("SELECT SUM(quantity) AS total_items FROM cart_items WHERE cart_id = ?");
+        $stmt_items->bind_param("i", $cart_id);
+        $stmt_items->execute();
+        $items_result = $stmt_items->get_result();
+
+        if ($items_row = $items_result->fetch_assoc()) {
+            $cart_count = (int)$items_row['total_items'];
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,9 +105,10 @@ include 'helpers/authenticated.php';
                     <div class="option-list">
                         <!-- Cart Button -->
                         <div class="cart-btn">
-                            <a href="shoping-cart.php" class="icon flaticon-shopping-cart" style="color: black"><span
-                                    class="total-cart" style="background-color: #a40301;color:white">3</span></a>
-                        </div>
+							<a href="shoping-cart.php" class="icon flaticon-shopping-cart" style="color: black"><span class="total-cart" style="background-color: #a40301;color:white">
+    <?= $cart_count ?>
+</span></a>
+						</div>
                         <!-- Search Btn -->
 
                     </div>

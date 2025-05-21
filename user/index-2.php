@@ -1,6 +1,35 @@
 <?php
 session_start();
 include 'helpers/authenticated.php';
+include 'database/database.php';
+?>
+
+<?php
+$cart_count = 0;
+
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+
+    // Get the cart ID
+    $stmt = $conn->prepare("SELECT id FROM carts WHERE user_id = ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $cart_result = $stmt->get_result();
+
+    if ($cart_row = $cart_result->fetch_assoc()) {
+        $cart_id = $cart_row['id'];
+
+        // Count total quantity from cart_items
+        $stmt_items = $conn->prepare("SELECT SUM(quantity) AS total_items FROM cart_items WHERE cart_id = ?");
+        $stmt_items->bind_param("i", $cart_id);
+        $stmt_items->execute();
+        $items_result = $stmt_items->get_result();
+
+        if ($items_row = $items_result->fetch_assoc()) {
+            $cart_count = (int)$items_row['total_items'];
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -79,9 +108,9 @@ include 'helpers/authenticated.php';
 						<div class="option-list">
 							<!-- Cart Button -->
 							<div class="cart-btn">
-								<a href="shoping-cart.php" class="icon flaticon-shopping-cart"
-									style="color: black"><span class="total-cart"
-										style="background-color: #a40301;color:white">3</span></a>
+							<a href="shoping-cart.php" class="icon flaticon-shopping-cart" style="color: black"><span class="total-cart" style="background-color: #a40301;color:white">
+    <?= $cart_count ?>
+</span></a>
 							</div>
 							<!-- Search Btn -->
 
@@ -164,7 +193,7 @@ include 'helpers/authenticated.php';
 									<li class="current"><a href="#">Home</a></li>
 									<li><a href="gallery.php">Gallery</a></li>
 									<li><a href="profile.php">Profile</a></li>
-									<li><a href="profile.php">Logout</a></li>
+									<li><a href="handlers/logout_handler.php">Logout</a></li>
 								</ul>
 							</div>
 						</nav><!-- Main Menu End-->
@@ -433,132 +462,28 @@ include 'helpers/authenticated.php';
 
 					<div class="filter-list row clearfix">
 
-						<!-- Pizza + Beverages -->
-						<div class="product-block all burgers col-lg-3 col-md-6 col-sm-12">
+						<?php
+						$result = $conn->query("SELECT * FROM products");
+						while ($row = $result->fetch_assoc()) {
+						?>
+						<div class="product-block all <?= $row['category'] ?> col-lg-3 col-md-6 col-sm-12">
 							<div class="inner-box">
 								<figure class="image-box">
-									<img src="assets/images/resource/products/4.jpg" alt="">
+									<img src="<?= $row['image_path'] ?>" alt="">
 								</figure>
 								<div class="lower-content">
-									<h4><a href="shop-single.php">Chicken Burger</a></h4>
-									<div class="text">Our flavors & ingredients to build our local burgers.</div>
-									<div class="price">$17.00</div>
+									<h4><a href="shop-single.php"><?= $row['name'] ?></a></h4>
+									<div class="text"><?= $row['description'] ?></div>
+									<div class="price">$<?= number_format($row['price'], 2) ?></div>
 									<div class="lower-box">
-										<a href="shop-single.php" class="theme-btn btn-style-five"><span
-												class="txt">Order Now</span></a>
+										<a href="shop-single.php?id=<?= $row['id'] ?>" class="theme-btn btn-style-five">
+											<span class="txt">Order Now</span>
+										</a>
 									</div>
 								</div>
 							</div>
 						</div>
-
-						<!-- Salad + Pizza + Burgers + Fries -->
-						<div class="product-block all beverages col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<figure class="image-box">
-									<img src="assets/images/resource/products/5.jpg" alt="">
-								</figure>
-								<div class="lower-content">
-									<h4><a href="shop-single.php">Soft Drink</a></h4>
-									<div class="text">Our flavors & ingredients to build our local burgers.</div>
-									<div class="price">$17.00</div>
-									<div class="lower-box">
-										<a href="shop-single.php" class="theme-btn btn-style-five"><span
-												class="txt">Order Now</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Salad + Wraps + Pizza + Fries -->
-						<div class="product-block all pizza col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<figure class="image-box">
-									<img src="assets/images/resource/products/6.jpg" alt="">
-								</figure>
-								<div class="lower-content">
-									<h4><a href="shop-single.php">Pizza 2</a></h4>
-									<div class="text">Our flavors & ingredients to build our local burgers.</div>
-									<div class="price">$17.00</div>
-									<div class="lower-box">
-										<a href="shop-single.php" class="theme-btn btn-style-five"><span
-												class="txt">Order Now</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Pizza + Wraps + Burgers + Beverages + Salad -->
-						<div class="product-block all burgers col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<figure class="image-box">
-									<img src="assets/images/resource/products/1.jpg" alt="">
-								</figure>
-								<div class="lower-content">
-									<h4><a href="shop-single.php">Burger 2</a></h4>
-									<div class="text">Our flavors & ingredients to build our local burgers.</div>
-									<div class="price">$17.00</div>
-									<div class="lower-box">
-										<a href="shop-single.php" class="theme-btn btn-style-five"><span
-												class="txt">Order Now</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Beverages + Wraps -->
-						<div class="product-block all pizza wraps col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<figure class="image-box">
-									<img src="assets/images/resource/products/2.jpg" alt="">
-								</figure>
-								<div class="lower-content">
-									<h4><a href="shop-single.php">Pizza 1</a></h4>
-									<div class="text">Our flavors & ingredients to build our local burgers.</div>
-									<div class="price">$17.00</div>
-									<div class="lower-box">
-										<a href="shop-single.php" class="theme-btn btn-style-five"><span
-												class="txt">Order Now</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Salad + Fest + Burgers + Beverages -->
-						<div class="product-block all burgers col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<figure class="image-box">
-									<img src="assets/images/resource/products/1.jpg" alt="">
-								</figure>
-								<div class="lower-content">
-									<h4><a href="shop-single.php">Burger 1</a></h4>
-									<div class="text">Our flavors & ingredients to build our local burgers.</div>
-									<div class="price">$17.00</div>
-									<div class="lower-box">
-										<a href="shop-single.php" class="theme-btn btn-style-five"><span
-												class="txt">Order Now</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Burgers -->
-						<div class="product-block all fries col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<figure class="image-box">
-									<img src="assets/images/resource/products/3.jpg" alt="">
-								</figure>
-								<div class="lower-content">
-									<h4><a href="shop-single.php">Fries</a></h4>
-									<div class="text">Our flavors & ingredients to build our local burgers.</div>
-									<div class="price">$17.00</div>
-									<div class="lower-box">
-										<a href="shop-single.php" class="theme-btn btn-style-five"><span
-												class="txt">Order Now</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-
+						<?php } ?>
 					</div>
 				</div>
 			</div>

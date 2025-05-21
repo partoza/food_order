@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'database/database.php';
 include 'helpers/not_authenticated.php';
 ?>
 <!DOCTYPE html>

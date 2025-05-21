@@ -1,7 +1,67 @@
 <?php
 session_start();
 include 'helpers/authenticated.php';
+include 'database/database.php';
+$user_id = $_SESSION['user_id'] ?? null;
+if (!$user_id) {
+    header("Location: login.php");
+    exit;
+}
+
+// Fetch cart
+$cartQuery = $conn->prepare("SELECT id FROM carts WHERE user_id = ?");
+$cartQuery->bind_param("i", $user_id);
+$cartQuery->execute();
+$cartResult = $cartQuery->get_result();
+$cart = $cartResult->fetch_assoc();
+
+$items = [];
+$total = 0;
+
+if ($cart) {
+    $cart_id = $cart['id'];
+
+    // Fetch items
+    $stmt = $conn->prepare("
+        SELECT ci.id as cart_item_id, p.id as product_id, p.name, p.price, p.image_path, ci.quantity
+        FROM cart_items ci
+        JOIN products p ON ci.product_id = p.id
+        WHERE ci.cart_id = ?
+    ");
+    $stmt->bind_param("i", $cart_id);
+    $stmt->execute();
+    $items = $stmt->get_result();
+}
 ?>
+
+<?php
+$cart_count = 0;
+
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+
+    // Get the cart ID
+    $stmt = $conn->prepare("SELECT id FROM carts WHERE user_id = ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $cart_result = $stmt->get_result();
+
+    if ($cart_row = $cart_result->fetch_assoc()) {
+        $cart_id = $cart_row['id'];
+
+        // Count total quantity from cart_items
+        $stmt_items = $conn->prepare("SELECT SUM(quantity) AS total_items FROM cart_items WHERE cart_id = ?");
+        $stmt_items->bind_param("i", $cart_id);
+        $stmt_items->execute();
+        $items_result = $stmt_items->get_result();
+
+        if ($items_row = $items_result->fetch_assoc()) {
+            $cart_count = (int)$items_row['total_items'];
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,8 +134,9 @@ include 'helpers/authenticated.php';
 					<div class="option-list">
 						<!-- Cart Button -->
 						<div class="cart-btn">
-							<a href="shop-single.php" class="icon flaticon-shopping-cart" style="color: black"><span
-									class="total-cart" style="background-color: #a40301;color:white">3</span></a>
+							<a href="shoping-cart.php" class="icon flaticon-shopping-cart" style="color: black"><span class="total-cart" style="background-color: #a40301;color:white">
+    <?= $cart_count ?>
+</span></a>
 						</div>
 						<!-- Search Btn -->
 
@@ -292,46 +353,35 @@ include 'helpers/authenticated.php';
 							</thead>
 
 							<tbody>
-								<tr>
-									<td class="prod-column">
-										<div class="column-box">
-											<figure class="prod-thumb"><a href="#"><img
-														src="assets/images/resource/products/8.jpg" alt=""></a></figure>
-										</div>
-									</td>
-									<td>
-										<h4 class="prod-title">Burger</h4>
-									</td>
-									<td class="sub-total">$25.00</td>
-									<td class="qty">
-										<div class="item-quantity"><input class="quantity-spinner" type="text" value="2"
-												name="quantity"></div>
-									</td>
-									<td class="price">$25.00</td>
-									<td><a href="#" class="remove-btn"><span class="fa fa-times"></span></a></td>
-								</tr>
-
+								<?php if ($items && $items->num_rows > 0): ?>
+									<?php $grandTotal = 0; ?>
+									<?php while ($item = $items->fetch_assoc()): ?>
+										<?php $subTotal = $item['price'] * $item['quantity']; ?>
+										<?php $grandTotal += $subTotal; ?>
+										<tr>
+											<td class="prod-column">
+												<div class="column-box">
+													<figure class="prod-thumb">
+														<a href="#"><img src="<?= htmlspecialchars($item['image_path']) ?>" alt=""></a>
+													</figure>
+												</div>
+											</td>
+											<td><h4 class="prod-title"><?= htmlspecialchars($item['name']) ?></h4></td>
+											<td class="sub-total">$<?= number_format($item['price'], 2) ?></td>
+											<td class="qty">
+												<div class="item-quantity">
+													<input class="quantity-spinner" type="number" value="<?= $item['quantity'] ?>" name="quantity[<?= $item['cart_item_id'] ?>]" min="1">
+												</div>
+											</td>
+											<td class="price">$<?= number_format($subTotal, 2) ?></td>
+											<td><a href="handlers/remove_from_cart.php?id=<?= $item['cart_item_id'] ?>" class="remove-btn"><span class="fa fa-times"></span></a></td>
+										</tr>
+									<?php endwhile; ?>
+								<?php else: ?>
+									<tr><td colspan="6">Your cart is empty.</td></tr>
+								<?php endif; ?>
 							</tbody>
 						</table>
-					</div>
-
-					<div class="cart-options clearfix">
-						<div class="pull-left">
-							<div class="apply-coupon clearfix">
-								<div class="form-group clearfix">
-									<input type="text" name="coupon-code" value="" placeholder="Coupon Code">
-								</div>
-								<div class="form-group clearfix">
-									<button type="button" class="theme-btn coupon-btn">Apply Coupon</button>
-								</div>
-							</div>
-						</div>
-
-						<div class="pull-right">
-							<button type="button" class="theme-btn btn-style-five cart-btn"><span class="txt">Add to
-									cart</span></button>
-						</div>
-
 					</div>
 
 					<div class="row clearfix">
@@ -341,16 +391,12 @@ include 'helpers/authenticated.php';
 						<div class="column pull-right col-lg-5 col-md-12 col-sm-12">
 							<!--Totals Table-->
 							<ul class="totals-table">
-								<li>
-									<h3>Cart Totals</h3>
+								<li><h3>Cart Totals</h3></li>
+								<li class="clearfix"><span class="col">Sub Total</span><span class="col">$<?= number_format($grandTotal ?? 0, 2) ?></span></li>
+								<li class="clearfix total"><span class="col">Total</span><span class="col price">$<?= number_format($grandTotal ?? 0, 2) ?></span></li>
+								<li class="text-right">
+									<a href="checkout.php" class="theme-btn btn-style-five proceed-btn"><span class="txt">Proceed to Checkout</span></a>
 								</li>
-								<li class="clearfix"><span class="col">Sub Total</span><span class="col">$25.00</span>
-								</li>
-								<li class="clearfix total"><span class="col">Total</span><span
-										class="col price">$25.00</span></li>
-								<li class="text-right"><button type="submit"
-										class="theme-btn btn-style-five proceed-btn"><span class="txt">Proceed to
-											Checkout</span></button></li>
 							</ul>
 						</div>
 					</div>

@@ -3,6 +3,55 @@ session_start();
 include 'helpers/authenticated.php';
 ?>
 
+<?php
+// Connect to database
+$conn = new mysqli('localhost', 'root', '', 'food_order');
+
+// Get product ID from URL
+$product_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+
+// Fetch product from DB
+$sql = "SELECT * FROM products WHERE id = $product_id";
+$result = $conn->query($sql);
+
+// Check if product exists
+if ($result && $result->num_rows > 0) {
+    $product = $result->fetch_assoc();
+} else {
+    die("Product not found.");
+}
+?>
+
+<?php
+include 'database/database.php'; // adjust path as needed
+
+$cart_count = 0;
+
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+
+    // Get the cart ID
+    $stmt = $conn->prepare("SELECT id FROM carts WHERE user_id = ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $cart_result = $stmt->get_result();
+
+    if ($cart_row = $cart_result->fetch_assoc()) {
+        $cart_id = $cart_row['id'];
+
+        // Count total quantity from cart_items
+        $stmt_items = $conn->prepare("SELECT SUM(quantity) AS total_items FROM cart_items WHERE cart_id = ?");
+        $stmt_items->bind_param("i", $cart_id);
+        $stmt_items->execute();
+        $items_result = $stmt_items->get_result();
+
+        if ($items_row = $items_result->fetch_assoc()) {
+            $cart_count = (int)$items_row['total_items'];
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,9 +124,10 @@ include 'helpers/authenticated.php';
                     <div class="option-list">
                         <!-- Cart Button -->
                         <div class="cart-btn">
-                            <a href="shoping-cart.php" class="icon flaticon-shopping-cart" style="color: black"><span
-                                    class="total-cart" style="background-color: #a40301;color:white">3</span></a>
-                        </div>
+							<a href="shoping-cart.php" class="icon flaticon-shopping-cart" style="color: black"><span class="total-cart" style="background-color: #a40301;color:white">
+    <?= $cart_count ?>
+</span></a>
+						</div>
                         <!-- Search Btn -->
 
                     </div>
@@ -233,35 +283,50 @@ include 'helpers/authenticated.php';
 
                 <div class="shop-single">
                     <div class="product-details">
+                        <?php if (isset($_SESSION['cart_success'])): ?>
+                            <div class="alert alert-success"><?= $_SESSION['cart_success'] ?></div>
+                            <?php unset($_SESSION['cart_success']); ?>
+                        <?php endif; ?>
 
+                        <?php if (isset($_SESSION['cart_error'])): ?>
+                            <div class="alert alert-danger"><?= $_SESSION['cart_error'] ?></div>
+                            <?php unset($_SESSION['cart_error']); ?>
+                        <?php endif; ?>
+                    <form action="handlers/add_to_cart_handler.php" method="POST">
                         <!--Basic Details-->
                         <div class="basic-details">
                             <div class="row clearfix">
                                 <div class="image-column col-lg-6 col-md-12 col-sm-12">
-                                    <figure class="image-box"><a href="assets/images/resource/products/11.jpg"
-                                            class="lightbox-image" title="Image Caption Here"><img
-                                                src="assets/images/resource/products/11.jpg" alt=""></a></figure>
+                                    <figure class="image-box">
+                                        <a href="<?= htmlspecialchars($product['image_path']) ?>" class="lightbox-image" title="<?= htmlspecialchars($product['name']) ?>">
+                                            <img src="<?= htmlspecialchars($product['image_path']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
+                                        </a>
+                                    </figure>
                                 </div>
                                 <div class="info-column col-lg-6 col-md-12 col-sm-12">
                                     <div class="inner-column">
-                                        <h2>Chicken Burger</h2>
-                                        <div class="text">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
-                                            odit aut fugit, sed quia consequ untur magni dolores eos qui ratione
-                                            voluptatem sequi nesciunt. Neque porro quisquam est,</div>
-                                        <div class="price">Price : <span>$12.49</span></div>
+                                        <h2><?= htmlspecialchars($product['name']) ?></h2>
+                                        <div class="text"><?= nl2br(htmlspecialchars($product['description'])) ?></div>
+                                        <div class="price">Price : <span>$<?= number_format($product['price'], 2) ?></span></div>
 
                                         <div class="other-options clearfix">
-                                            <div class="item-quantity"><label class="field-label">Quantity
-                                                    :</label><input class="quantity-spinner" type="text" value="2"
-                                                    name="quantity"></div>
-                                            <button type="button" class="theme-btn btn-style-five"><span class="txt">Add
-                                                    to cart</span></button>
+                                            <div class="item-quantity">
+                                                <label class="field-label" for="quantity">Quantity:</label>
+                                                <input id="quantity" class="quantity-spinner" type="number" name="quantity" value="1" min="1" required>
+                                            </div>
+                                            <!-- Hidden inputs to send product ID -->
+                                            <input type="hidden" name="product_id" value="<?= (int)$product['id'] ?>">
+                                            <button type="submit" class="theme-btn btn-style-five">
+                                                <span class="txt">Add to cart</span>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!--Basic Details-->
+                    </form>
+                    
 
                         <!--Product Info Tabs-->
                         <div class="product-info-tabs">
