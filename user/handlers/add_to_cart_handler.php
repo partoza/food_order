@@ -5,7 +5,6 @@ include __DIR__ . '/../database/database.php';
 
 try {
 
-    // Only allow POST requests
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         $_SESSION['cart_error'] = 'Invalid request.';
         header('Location: ../shop-single.php?id=' . $product_id);
@@ -22,7 +21,6 @@ try {
         exit;
     }
 
-    // STEP 1: Check for existing cart
     $stmt = $conn->prepare("SELECT id FROM carts WHERE user_id = ?");
     $stmt->bind_param('i', $user_id);
     $stmt->execute();
@@ -32,7 +30,7 @@ try {
         $stmt->bind_result($cart_id);
         $stmt->fetch();
     } else {
-        // Create cart
+
         $insert = $conn->prepare("INSERT INTO carts (user_id) VALUES (?)");
         $insert->bind_param('i', $user_id);
         $insert->execute();
@@ -41,7 +39,6 @@ try {
     }
     $stmt->close();
 
-    // STEP 2: Check if product already in cart
     $stmt = $conn->prepare("SELECT id, quantity FROM cart_items WHERE cart_id = ? AND product_id = ?");
     $stmt->bind_param('ii', $cart_id, $product_id);
     $stmt->execute();
@@ -64,7 +61,6 @@ try {
     }
     $stmt->close();
 
-    // Success feedback
     $_SESSION['cart_success'] = 'Item added to cart successfully.';
     header('Location: ../shop-single.php?id=' . $product_id);
     exit;

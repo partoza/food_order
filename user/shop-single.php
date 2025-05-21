@@ -4,17 +4,10 @@ include 'helpers/authenticated.php';
 ?>
 
 <?php
-// Connect to database
 $conn = new mysqli('localhost', 'root', '', 'food_order');
-
-// Get product ID from URL
 $product_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-
-// Fetch product from DB
 $sql = "SELECT * FROM products WHERE id = $product_id";
 $result = $conn->query($sql);
-
-// Check if product exists
 if ($result && $result->num_rows > 0) {
     $product = $result->fetch_assoc();
 } else {
@@ -23,14 +16,12 @@ if ($result && $result->num_rows > 0) {
 ?>
 
 <?php
-include 'database/database.php'; // adjust path as needed
+include 'database/database.php';
 
 $cart_count = 0;
 
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
-
-    // Get the cart ID
     $stmt = $conn->prepare("SELECT id FROM carts WHERE user_id = ?");
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
@@ -38,8 +29,6 @@ if (isset($_SESSION['user_id'])) {
 
     if ($cart_row = $cart_result->fetch_assoc()) {
         $cart_id = $cart_row['id'];
-
-        // Count total quantity from cart_items
         $stmt_items = $conn->prepare("SELECT SUM(quantity) AS total_items FROM cart_items WHERE cart_id = ?");
         $stmt_items->bind_param("i", $cart_id);
         $stmt_items->execute();

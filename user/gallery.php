@@ -3,7 +3,7 @@ session_start();
 include 'helpers/authenticated.php';
 ?>
 <?php
-include 'database/database.php'; // adjust path as needed
+include 'database/database.php';
 
 $cart_count = 0;
 

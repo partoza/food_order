@@ -18,7 +18,7 @@ try {
 
     $user_id = (int) $_SESSION['user_id'];
 
-    // Step 1: Fetch the user's cart and items
+
     $stmt = $conn->prepare("SELECT id FROM carts WHERE user_id = ?");
     $stmt->bind_param('i', $user_id);
     $stmt->execute();
@@ -34,7 +34,6 @@ try {
     $stmt->fetch();
     $stmt->close();
 
-    // Get cart items
     $stmt = $conn->prepare("SELECT ci.product_id, ci.quantity, p.price FROM cart_items ci
                             JOIN products p ON ci.product_id = p.id
                             WHERE ci.cart_id = ?");
@@ -48,7 +47,6 @@ try {
         exit;
     }
 
-    // Calculate total and prepare order items
     $total = 0;
     $order_items = [];
 
@@ -64,14 +62,12 @@ try {
 
     $stmt->close();
 
-    // Step 2: Insert order
     $stmt = $conn->prepare("INSERT INTO orders (user_id, total) VALUES (?, ?)");
     $stmt->bind_param('id', $user_id, $total);
     $stmt->execute();
     $order_id = $stmt->insert_id;
     $stmt->close();
 
-    // Step 3: Insert order items
     $stmt = $conn->prepare("INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)");
     foreach ($order_items as $item) {
         $stmt->bind_param('iiid', $order_id, $item['product_id'], $item['quantity'], $item['price']);
@@ -79,7 +75,6 @@ try {
     }
     $stmt->close();
 
-    // Step 4: Clear cart
     $conn->begin_transaction();
     $conn->query("DELETE FROM cart_items WHERE cart_id = $cart_id");
     $conn->query("DELETE FROM carts WHERE id = $cart_id");

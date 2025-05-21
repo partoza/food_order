@@ -2,7 +2,7 @@
 
 session_start();
 
-// Remove the token from the session
+// Remove token from the session
 unset($_SESSION['access_token']);
 
 session_destroy();

@@ -8,7 +8,6 @@ if (!$user_id) {
     exit;
 }
 
-// Fetch cart
 $cartQuery = $conn->prepare("SELECT id FROM carts WHERE user_id = ?");
 $cartQuery->bind_param("i", $user_id);
 $cartQuery->execute();
@@ -20,8 +19,6 @@ $total = 0;
 
 if ($cart) {
     $cart_id = $cart['id'];
-
-    // Fetch items
     $stmt = $conn->prepare("
         SELECT ci.id as cart_item_id, p.id as product_id, p.name, p.price, p.image_path, ci.quantity
         FROM cart_items ci
@@ -39,8 +36,6 @@ $cart_count = 0;
 
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
-
-    // Get the cart ID
     $stmt = $conn->prepare("SELECT id FROM carts WHERE user_id = ?");
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
@@ -48,8 +43,6 @@ if (isset($_SESSION['user_id'])) {
 
     if ($cart_row = $cart_result->fetch_assoc()) {
         $cart_id = $cart_row['id'];
-
-        // Count total quantity from cart_items
         $stmt_items = $conn->prepare("SELECT SUM(quantity) AS total_items FROM cart_items WHERE cart_id = ?");
         $stmt_items->bind_param("i", $cart_id);
         $stmt_items->execute();

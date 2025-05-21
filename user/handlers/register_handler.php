@@ -12,28 +12,24 @@ try {
         $confirm_password = $_POST['confirm_password'];
         $contact = $_POST['contact'];
 
-        // Validate passwords match
         if ($password !== $confirm_password) {
             $_SESSION['errors'] = "Passwords do not match!";
             header("Location: ../registration.php");
             exit;
         }
 
-        // Check if username exists
         if (username_exists($conn, $username)) {
             $_SESSION['errors'] = "Username already taken!";
             header("Location: ../registration.php");
             exit;
         }
 
-        // Check if email exists
         if (email_exists($conn, $email)) {
             $_SESSION['errors'] = "Email already registered!";
             header("Location: ../registration.php");
             exit;
         }
 
-        // Create account
         if (create_account($conn, $first_name, $last_name, $username, $email, $password, $contact)) {
             $_SESSION['success'] = "Registration successful! Please login.";
             header("Location: ../login.php");
