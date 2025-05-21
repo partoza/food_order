@@ -4,6 +4,7 @@ include 'helpers/authenticated.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<title>Food Order</title>
@@ -12,7 +13,7 @@ include 'helpers/authenticated.php';
 
 	<link href="assets/vendors/flat-icon/flaticon.css" rel="stylesheet">
 
- 
+
 	<!-- Rev slider css -->
 	<link href="assets/vendors/revolution/css/settings.css" rel="stylesheet">
 	<link href="assets/vendors/revolution/css/layers.css" rel="stylesheet">
@@ -25,8 +26,8 @@ include 'helpers/authenticated.php';
 	<link rel="icon" href="assets/images/logo-02.png" type="image/x-icon">
 
 	<link
-			href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&amp;family=Open+Sans:wght@400;600;700;800&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&amp;family=Poppins:wght@300;400;500;600;700;800;900&amp;display=swap"
-			rel="stylesheet">
+		href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&amp;family=Open+Sans:wght@400;600;700;800&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&amp;family=Poppins:wght@300;400;500;600;700;800;900&amp;display=swap"
+		rel="stylesheet">
 
 	<!-- Responsive -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,143 +38,100 @@ include 'helpers/authenticated.php';
 
 <body>
 
-<div class="page-wrapper">
+	<div class="page-wrapper">
 
-	<!-- Preloader -->
-	<div class="preloader"></div>
+		<!-- Preloader -->
+		<div class="preloader"></div>
 
-	<header class="main-header">
-		<!--Header Top-->
-		<div class="header-top" style="background-color:#f2e39c; color:black">
-			<div class="auto-container clearfix">
-				<div class="top-left">
-					<!-- Info List -->
-					<ul class="info-list">
+		<header class="main-header">
+			<!--Header Top-->
+			<div class="header-top" style="background-color:#f2e39c; color:black">
+				<div class="auto-container clearfix">
+					<div class="top-left">
+						<!-- Info List -->
+						<ul class="info-list">
 
-					<li><a href="mailto:info@abc.co.in" style="color: black"><span class="icon far fa-envelope"></span>
+							<li><a href="mailto:info@abc.co.in" style="color: black"><span
+										class="icon far fa-envelope"></span>
 									info@abc.co.in</a></li>
-					</ul>
-				</div>
-				<div class="top-right clearfix">
+						</ul>
+					</div>
+					<div class="top-right clearfix">
 
-					<!--Social Box-->
-					<ul class="social-box">
-							<?php if (isset($_SESSION['username'], $_SESSION['login_time'])): 
+						<!--Social Box-->
+						<ul class="social-box">
+							<?php if (isset($_SESSION['username'], $_SESSION['login_time'])):
 								// Calculate how long they've been logged in
 								$elapsed = time() - $_SESSION['login_time'];
 								$minutes = floor($elapsed / 60);
 								$seconds = $elapsed % 60;
-							?>
+								?>
 								<li style="color:black; padding-left:1em;">
-								Logged in as <strong><?php echo htmlspecialchars($_SESSION['username']); ?></strong>
-								(<?php echo $minutes; ?>m <?php echo $seconds; ?>s)
+									Logged in as <strong><?php echo htmlspecialchars($_SESSION['username']); ?></strong>
+									(<?php echo $minutes; ?>m <?php echo $seconds; ?>s)
 								</li>
 							<?php endif; ?>
 							<li><a href="#" style="color: black"><span class="fa fa-user-alt"></span></a></li>
 						</ul>
-					<div class="option-list">
-						<!-- Cart Button -->
-						<div class="cart-btn">
-							<a href="shop-single.php" class="icon flaticon-shopping-cart" style="color: black"><span
-									class="total-cart" style="background-color: #a40301;color:white">3</span></a>
-						</div>
-						<!-- Search Btn -->
+						<div class="option-list">
+							<!-- Cart Button -->
+							<div class="cart-btn">
+								<a href="shop-single.php" class="icon flaticon-shopping-cart" style="color: black"><span
+										class="total-cart" style="background-color: #a40301;color:white">3</span></a>
+							</div>
+							<!-- Search Btn -->
 
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- End Header Top -->
+			<!-- End Header Top -->
 
-		<!-- Header Upper -->
-		<div class="header-upper">
-			<div class="inner-container">
-				<div class="auto-container clearfix">
-					<!--Info-->
-					<div class="logo-outer">
-						<div class="logo" style="margin-top: -20px;"><a href="index-2.php"><img src="assets/images/logo-02.png" alt=""
-																								 title=""></a></div>
-					</div>
+			<!-- Header Upper -->
+			<div class="header-upper">
+				<div class="inner-container">
+					<div class="auto-container clearfix">
+						<!--Info-->
+						<div class="logo-outer">
+							<div class="logo" style="margin-top: -20px;"><a href="index-2.php"><img
+										src="assets/images/logo-02.png" alt="" title=""></a></div>
+						</div>
 
-					<!--Nav Box-->
-					<div class="nav-outer clearfix">
-						<!-- Main Menu -->
-						<nav class="main-menu navbar-expand-md navbar-light">
-							<div class="navbar-header">
-								<!-- Togg le Button -->
-								<button class="navbar-toggler" type="button" data-toggle="collapse"
+						<!--Nav Box-->
+						<div class="nav-outer clearfix">
+							<!-- Main Menu -->
+							<nav class="main-menu navbar-expand-md navbar-light">
+								<div class="navbar-header">
+									<!-- Togg le Button -->
+									<button class="navbar-toggler" type="button" data-toggle="collapse"
 										data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 										aria-expanded="false" aria-label="Toggle navigation">
-									<span class="icon flaticon-menu"></span>
-								</button>
+										<span class="icon flaticon-menu"></span>
+									</button>
+								</div>
+
+								<div class="collapse navbar-collapse clearfix" id="navbarSupportedContent">
+									<ul class="navigation clearfix">
+										<li><a href="index-2.php">Home</a></li>
+										<li><a href="gallery.php">Gallery</a></li>
+										<li class="current"><a href="shoping-cart.php">Cart</a></li>
+										<li><a href="handlers/logout_handler.php">Logout</a></li>
+									</ul>
+								</div>
+							</nav>
+							<!-- Main Menu End-->
+
+							<div class="outer-box">
+								<div class="order">
+									Order Now
+									<span><a href="tel:1800-123-4567">1800 123 4567</a></span>
+								</div>
 							</div>
 
-							<div class="collapse navbar-collapse clearfix" id="navbarSupportedContent">
-								<ul class="navigation clearfix">
-									<li class="current dropdown"><a href="#">Home</a>
-										<ul>
-											<li><a href="index-2.php">Home Page 01</a></li>
-											<li><a href="index-3.php">Home Page 02</a></li>
-											<li><a href="index-4.php">Home Page 03</a></li>
-											<li class="dropdown"><a href="#">Header Styles</a>
-												<ul>
-													<li><a href="index-2.php">Header Style 01</a></li>
-													<li><a href="index-3.php">Header Style 02</a></li>
-													<li><a href="index-4.php">Header Style 03</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-									<li class="dropdown"><a href="#">About Us</a>
-										<ul>
-											<li><a href="about.php">About us</a></li>
-											<li><a href="services.php">Services</a></li>
-											<li><a href="testimonials.php">Testimonials</a></li>
-											<li><a href="faq.php">Faq's</a></li>
-											<li><a href="comming-soon.php">Comming Soon</a></li>
-										</ul>
-									</li>
-									<li class="dropdown"><a href="#">Our Offers</a>
-										<ul>
-											<li><a href="menu.php">Classic Menu</a></li>
-											<li><a href="menu-features.php">Menu Features</a></li>
-											<li><a href="menu-highlights.php">Menu Highlights</a></li>
-										</ul>
-									</li>
-									<li><a href="gallery.php">Gallery</a></li>
-									<li class="dropdown"><a href="#">Blog</a>
-										<ul>
-											<li><a href="blog.php">Blogs Grid</a></li>
-											<li><a href="blog-list.php">Blogs List</a></li>
-											<li><a href="blog-detail.php">Blog Detail</a></li>
-											<li><a href="not-found.php">Not Found</a></li>
-										</ul>
-									</li>
-									<li class="dropdown"><a href="#">Shop</a>
-										<ul>
-											<li><a href="shops.php">Our Products</a></li>
-											<li><a href="shop-single.php">Product Single</a></li>
-											<li><a href="shoping-cart.php">Shopping Cart</a></li>
-											<li><a href="checkout.php">Checkout</a></li>
-										</ul>
-									</li>
-									<li><a href="contact.php">Contact</a></li>
-								</ul>
-							</div>
-						</nav>
-						<!-- Main Menu End-->
-
-						<div class="outer-box">
-							<div class="order">
-								Order Now
-								<span><a href="tel:1800-123-4567">1800 123 4567</a></span>
-							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>
-		</div>
 			<!--End Header Upper-->
 
 			<!--Sticky Header-->
@@ -182,7 +140,7 @@ include 'helpers/authenticated.php';
 					<!--Logo-->
 					<div class="logo pull-left">
 						<a href="index-2.php" class="img-responsive"><img src="assets/images/logo-02.png" alt=""
-																		   title="" height="90" width="90" style="margin-top: -10px;"></a>
+								title="" height="90" width="90" style="margin-top: -10px;"></a>
 					</div>
 
 					<!--Right Col-->
@@ -199,54 +157,10 @@ include 'helpers/authenticated.php';
 
 							<div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
 								<ul class="navigation clearfix">
-									<li class="dropdown"><a href="#">Home</a>
-										<ul>
-											<li><a href="index-2.php">Home Page 01</a></li>
-											<li><a href="index-3.php">Home Page 02</a></li>
-											<li><a href="index-4.php">Home Page 03</a></li>
-											<li class="dropdown"><a href="#">Header Styles</a>
-												<ul>
-													<li><a href="index-2.php">Header Style 01</a></li>
-													<li><a href="index-3.php">Header Style 02</a></li>
-													<li><a href="index-4.php">Header Style 03</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-									<li class="dropdown"><a href="#">About Us</a>
-										<ul>
-											<li><a href="about.php">About us</a></li>
-											<li><a href="services.php">Services</a></li>
-											<li><a href="testimonials.php">Testimonials</a></li>
-											<li><a href="faq.php">Faq's</a></li>
-											<li><a href="comming-soon.php">Comming Soon</a></li>
-										</ul>
-									</li>
-									<li class="dropdown"><a href="#">Our Offers</a>
-										<ul>
-											<li><a href="menu.php">Classic Menu</a></li>
-											<li><a href="menu-features.php">Menu Features</a></li>
-											<li><a href="menu-highlights.php">Menu Highlights</a></li>
-										</ul>
-									</li>
+									<li><a href="index-2.php">Home</a></li>
 									<li><a href="gallery.php">Gallery</a></li>
-									<li class="dropdown"><a href="#">Blog</a>
-										<ul>
-											<li><a href="blog.php">Blogs Grid</a></li>
-											<li><a href="blog-list.php">Blogs List</a></li>
-											<li><a href="blog-detail.php">Blog Detail</a></li>
-											<li><a href="not-found.php">Not Found</a></li>
-										</ul>
-									</li>
-									<li class="current dropdown"><a href="#">Shop</a>
-										<ul>
-											<li><a href="shops.php">Our Products</a></li>
-											<li><a href="shop-single.php">Product Single</a></li>
-											<li><a href="shoping-cart.php">Shopping Cart</a></li>
-											<li><a href="checkout.php">Checkout</a></li>
-										</ul>
-									</li>
-									<li><a href="contact.php">Contact</a></li>
+									<li class="current"><a href="shoping-cart.php">Cart</a></li>
+									<li><a href="handlers/logout_handler.php">Logout</a></li>
 								</ul>
 							</div>
 						</nav><!-- Main Menu End-->
@@ -386,7 +300,8 @@ include 'helpers/authenticated.php';
 							<!-- Logo Widget -->
 							<div class="footer-widget logo-widget">
 								<div class="logo">
-									<a href="index-2.php"><img src="assets/images/logo-02.png" alt="" style="margin-top: -20px;" /></a>
+									<a href="index-2.php"><img src="assets/images/logo-02.png" alt=""
+											style="margin-top: -20px;" /></a>
 								</div>
 								<div class="text">Food Plaza <br> 336, abc Street,<br> Rajkot, 360004
 								</div>
@@ -479,4 +394,5 @@ include 'helpers/authenticated.php';
 
 
 <!-- Mirrored from designarc.biz/demos/wengdo/shoping-cart.php by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Dec 2021 09:11:12 GMT -->
+
 </html>

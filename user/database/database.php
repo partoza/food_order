@@ -38,10 +38,10 @@ $sql = "CREATE TABLE IF NOT EXISTS users (
 
 // first time on, uncomment this, just comment once db already created
 
-// if ($conn->query($sql) === TRUE) {
-//     echo "Table 'users' created successfully or already exists.";
-// } else {
-//     echo "Error creating table: " . $conn->error;
-// }
+ if ($conn->query($sql) === TRUE) {
+  echo "Table 'users' created successfully or already exists.";
+ } else {
+     echo "Error creating table: " . $conn->error;
+ }
 
 ?>

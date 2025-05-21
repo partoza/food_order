@@ -60,15 +60,15 @@ include 'helpers/authenticated.php';
 
 						<!--Social Box-->
 						<ul class="social-box">
-							<?php if (isset($_SESSION['username'], $_SESSION['login_time'])): 
+							<?php if (isset($_SESSION['username'], $_SESSION['login_time'])):
 								// Calculate how long they've been logged in
 								$elapsed = time() - $_SESSION['login_time'];
 								$minutes = floor($elapsed / 60);
 								$seconds = $elapsed % 60;
-							?>
+								?>
 								<li style="color:black; padding-left:1em;">
-								Logged in as <strong><?php echo htmlspecialchars($_SESSION['username']); ?></strong>
-								(<?php echo $minutes; ?>m <?php echo $seconds; ?>s)
+									Logged in as <strong><?php echo htmlspecialchars($_SESSION['username']); ?></strong>
+									(<?php echo $minutes; ?>m <?php echo $seconds; ?>s)
 								</li>
 							<?php endif; ?>
 							<li><a href="#" style="color: black"><span class="fa fa-user-alt"></span></a></li>
@@ -115,8 +115,8 @@ include 'helpers/authenticated.php';
 									<ul class="navigation clearfix">
 										<li><a href="index-2.php">Home</a></li>
 										<li class="current"><a href="gallery.php">Gallery</a></li>
-										<li><a href="profile.php">Profile</a></li>
-										<li><a href="profile.php">Logout</a></li>
+										<li><a href="shoping-cart.php">Cart</a></li>
+										<li><a href="handlers/logout_handler.php">Logout</a></li>
 									</ul>
 								</div>
 							</nav>
@@ -160,8 +160,8 @@ include 'helpers/authenticated.php';
 								<ul class="navigation clearfix">
 									<li><a href="index-2.php">Home</a></li>
 									<li class="current"><a href="gallery.php">Gallery</a></li>
-									<li><a href="profile.php">Profile</a></li>
-									<li><a href="profile.php">Logout</a></li>
+									<li><a href="shoping-cart.php">Cart</a></li>
+									<li><a href="handlers/logout_handler.php">Logout</a></li>
 								</ul>
 							</div>
 						</nav><!-- Main Menu End-->
