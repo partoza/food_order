@@ -34,6 +34,7 @@ try {
 
                 // optional: generate token if you want
                 $_SESSION['access_token'] = bin2hex(random_bytes(32));
+                $_SESSION['login_time']   = time();
 
                 header('Location: ../index-2.php');
                 exit;

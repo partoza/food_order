@@ -55,12 +55,25 @@ include 'helpers/authenticated.php';
 							<li><a href="mailto:info@abc.co.in" style="color: black"><span
 										class="icon far fa-envelope"></span>
 									info@abc.co.in</a></li>
+							
+
 						</ul>
 					</div>
 					<div class="top-right clearfix">
 
 						<!--Social Box-->
 						<ul class="social-box">
+							<?php if (isset($_SESSION['username'], $_SESSION['login_time'])): 
+								// Calculate how long they've been logged in
+								$elapsed = time() - $_SESSION['login_time'];
+								$minutes = floor($elapsed / 60);
+								$seconds = $elapsed % 60;
+							?>
+								<li style="color:black; padding-left:1em;">
+								Logged in as <strong><?php echo htmlspecialchars($_SESSION['username']); ?></strong>
+								(<?php echo $minutes; ?>m <?php echo $seconds; ?>s)
+								</li>
+							<?php endif; ?>
 							<li><a href="#" style="color: black"><span class="fa fa-user-alt"></span></a></li>
 						</ul>
 						<div class="option-list">
