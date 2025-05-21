@@ -196,7 +196,7 @@ include 'helpers/authenticated.php';
 								data-width="['670','670','670','400','320']" data-height="none" data-whitespace="normal"
 								data-type="text" data-responsive_offset="on"
 								data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:0px;s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
-								data-textAlign="['left','left','left','left']">Maxican Burger ...</div>
+								data-textAlign="['left','left','left','left']">Burger ...</div>
 							<div class="tp-caption tp-resizeme middle_text" data-x="['left','left','left','15','15']"
 								data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']"
 								data-voffset="['310','310','310','295','290']"
