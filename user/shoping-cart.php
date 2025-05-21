@@ -1,8 +1,12 @@
+<?php
+session_start();
+include 'helpers/authenticated.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Food Template</title>
+	<title>Food Order</title>
 	<!-- Stylesheets -->
 	<link href="assets/css/bootstrap.css" rel="stylesheet">
 
@@ -59,7 +63,7 @@
 					<div class="option-list">
 						<!-- Cart Button -->
 						<div class="cart-btn">
-							<a href="shop-single.html" class="icon flaticon-shopping-cart" style="color: black"><span
+							<a href="shop-single.php" class="icon flaticon-shopping-cart" style="color: black"><span
 									class="total-cart" style="background-color: #a40301;color:white">3</span></a>
 						</div>
 						<!-- Search Btn -->
@@ -76,7 +80,7 @@
 				<div class="auto-container clearfix">
 					<!--Info-->
 					<div class="logo-outer">
-						<div class="logo" style="margin-top: -20px;"><a href="index-2.html"><img src="assets/images/logo-02.png" alt=""
+						<div class="logo" style="margin-top: -20px;"><a href="index-2.php"><img src="assets/images/logo-02.png" alt=""
 																								 title=""></a></div>
 					</div>
 
@@ -97,52 +101,52 @@
 								<ul class="navigation clearfix">
 									<li class="current dropdown"><a href="#">Home</a>
 										<ul>
-											<li><a href="index-2.html">Home Page 01</a></li>
-											<li><a href="index-3.html">Home Page 02</a></li>
-											<li><a href="index-4.html">Home Page 03</a></li>
+											<li><a href="index-2.php">Home Page 01</a></li>
+											<li><a href="index-3.php">Home Page 02</a></li>
+											<li><a href="index-4.php">Home Page 03</a></li>
 											<li class="dropdown"><a href="#">Header Styles</a>
 												<ul>
-													<li><a href="index-2.html">Header Style 01</a></li>
-													<li><a href="index-3.html">Header Style 02</a></li>
-													<li><a href="index-4.html">Header Style 03</a></li>
+													<li><a href="index-2.php">Header Style 01</a></li>
+													<li><a href="index-3.php">Header Style 02</a></li>
+													<li><a href="index-4.php">Header Style 03</a></li>
 												</ul>
 											</li>
 										</ul>
 									</li>
 									<li class="dropdown"><a href="#">About Us</a>
 										<ul>
-											<li><a href="about.html">About us</a></li>
-											<li><a href="services.html">Services</a></li>
-											<li><a href="testimonials.html">Testimonials</a></li>
-											<li><a href="faq.html">Faq's</a></li>
-											<li><a href="comming-soon.html">Comming Soon</a></li>
+											<li><a href="about.php">About us</a></li>
+											<li><a href="services.php">Services</a></li>
+											<li><a href="testimonials.php">Testimonials</a></li>
+											<li><a href="faq.php">Faq's</a></li>
+											<li><a href="comming-soon.php">Comming Soon</a></li>
 										</ul>
 									</li>
 									<li class="dropdown"><a href="#">Our Offers</a>
 										<ul>
-											<li><a href="menu.html">Classic Menu</a></li>
-											<li><a href="menu-features.html">Menu Features</a></li>
-											<li><a href="menu-highlights.html">Menu Highlights</a></li>
+											<li><a href="menu.php">Classic Menu</a></li>
+											<li><a href="menu-features.php">Menu Features</a></li>
+											<li><a href="menu-highlights.php">Menu Highlights</a></li>
 										</ul>
 									</li>
-									<li><a href="gallery.html">Gallery</a></li>
+									<li><a href="gallery.php">Gallery</a></li>
 									<li class="dropdown"><a href="#">Blog</a>
 										<ul>
-											<li><a href="blog.html">Blogs Grid</a></li>
-											<li><a href="blog-list.html">Blogs List</a></li>
-											<li><a href="blog-detail.html">Blog Detail</a></li>
-											<li><a href="not-found.html">Not Found</a></li>
+											<li><a href="blog.php">Blogs Grid</a></li>
+											<li><a href="blog-list.php">Blogs List</a></li>
+											<li><a href="blog-detail.php">Blog Detail</a></li>
+											<li><a href="not-found.php">Not Found</a></li>
 										</ul>
 									</li>
 									<li class="dropdown"><a href="#">Shop</a>
 										<ul>
-											<li><a href="shops.html">Our Products</a></li>
-											<li><a href="shop-single.html">Product Single</a></li>
-											<li><a href="shoping-cart.html">Shopping Cart</a></li>
-											<li><a href="checkout.html">Checkout</a></li>
+											<li><a href="shops.php">Our Products</a></li>
+											<li><a href="shop-single.php">Product Single</a></li>
+											<li><a href="shoping-cart.php">Shopping Cart</a></li>
+											<li><a href="checkout.php">Checkout</a></li>
 										</ul>
 									</li>
-									<li><a href="contact.html">Contact</a></li>
+									<li><a href="contact.php">Contact</a></li>
 								</ul>
 							</div>
 						</nav>
@@ -166,7 +170,7 @@
 				<div class="auto-container clearfix">
 					<!--Logo-->
 					<div class="logo pull-left">
-						<a href="index-2.html" class="img-responsive"><img src="assets/images/logo-02.png" alt=""
+						<a href="index-2.php" class="img-responsive"><img src="assets/images/logo-02.png" alt=""
 																		   title="" height="90" width="90" style="margin-top: -10px;"></a>
 					</div>
 
@@ -186,52 +190,52 @@
 								<ul class="navigation clearfix">
 									<li class="dropdown"><a href="#">Home</a>
 										<ul>
-											<li><a href="index-2.html">Home Page 01</a></li>
-											<li><a href="index-3.html">Home Page 02</a></li>
-											<li><a href="index-4.html">Home Page 03</a></li>
+											<li><a href="index-2.php">Home Page 01</a></li>
+											<li><a href="index-3.php">Home Page 02</a></li>
+											<li><a href="index-4.php">Home Page 03</a></li>
 											<li class="dropdown"><a href="#">Header Styles</a>
 												<ul>
-													<li><a href="index-2.html">Header Style 01</a></li>
-													<li><a href="index-3.html">Header Style 02</a></li>
-													<li><a href="index-4.html">Header Style 03</a></li>
+													<li><a href="index-2.php">Header Style 01</a></li>
+													<li><a href="index-3.php">Header Style 02</a></li>
+													<li><a href="index-4.php">Header Style 03</a></li>
 												</ul>
 											</li>
 										</ul>
 									</li>
 									<li class="dropdown"><a href="#">About Us</a>
 										<ul>
-											<li><a href="about.html">About us</a></li>
-											<li><a href="services.html">Services</a></li>
-											<li><a href="testimonials.html">Testimonials</a></li>
-											<li><a href="faq.html">Faq's</a></li>
-											<li><a href="comming-soon.html">Comming Soon</a></li>
+											<li><a href="about.php">About us</a></li>
+											<li><a href="services.php">Services</a></li>
+											<li><a href="testimonials.php">Testimonials</a></li>
+											<li><a href="faq.php">Faq's</a></li>
+											<li><a href="comming-soon.php">Comming Soon</a></li>
 										</ul>
 									</li>
 									<li class="dropdown"><a href="#">Our Offers</a>
 										<ul>
-											<li><a href="menu.html">Classic Menu</a></li>
-											<li><a href="menu-features.html">Menu Features</a></li>
-											<li><a href="menu-highlights.html">Menu Highlights</a></li>
+											<li><a href="menu.php">Classic Menu</a></li>
+											<li><a href="menu-features.php">Menu Features</a></li>
+											<li><a href="menu-highlights.php">Menu Highlights</a></li>
 										</ul>
 									</li>
-									<li><a href="gallery.html">Gallery</a></li>
+									<li><a href="gallery.php">Gallery</a></li>
 									<li class="dropdown"><a href="#">Blog</a>
 										<ul>
-											<li><a href="blog.html">Blogs Grid</a></li>
-											<li><a href="blog-list.html">Blogs List</a></li>
-											<li><a href="blog-detail.html">Blog Detail</a></li>
-											<li><a href="not-found.html">Not Found</a></li>
+											<li><a href="blog.php">Blogs Grid</a></li>
+											<li><a href="blog-list.php">Blogs List</a></li>
+											<li><a href="blog-detail.php">Blog Detail</a></li>
+											<li><a href="not-found.php">Not Found</a></li>
 										</ul>
 									</li>
 									<li class="current dropdown"><a href="#">Shop</a>
 										<ul>
-											<li><a href="shops.html">Our Products</a></li>
-											<li><a href="shop-single.html">Product Single</a></li>
-											<li><a href="shoping-cart.html">Shopping Cart</a></li>
-											<li><a href="checkout.html">Checkout</a></li>
+											<li><a href="shops.php">Our Products</a></li>
+											<li><a href="shop-single.php">Product Single</a></li>
+											<li><a href="shoping-cart.php">Shopping Cart</a></li>
+											<li><a href="checkout.php">Checkout</a></li>
 										</ul>
 									</li>
-									<li><a href="contact.html">Contact</a></li>
+									<li><a href="contact.php">Contact</a></li>
 								</ul>
 							</div>
 						</nav><!-- Main Menu End-->
@@ -249,8 +253,8 @@
 			<div class="auto-container">
 				<h1>Shoping Cart</h1>
 				<ul class="bread-crumb clearfix">
-					<li><a href="index-2.html">Home</a></li>
-					<li><a href="shop.html">Shop</a></li>
+					<li><a href="index-2.php">Home</a></li>
+					<li><a href="shop.php">Shop</a></li>
 					<li>Cart</li>
 				</ul>
 			</div>
@@ -371,7 +375,7 @@
 							<!-- Logo Widget -->
 							<div class="footer-widget logo-widget">
 								<div class="logo">
-									<a href="index-2.html"><img src="assets/images/logo-02.png" alt="" style="margin-top: -20px;" /></a>
+									<a href="index-2.php"><img src="assets/images/logo-02.png" alt="" style="margin-top: -20px;" /></a>
 								</div>
 								<div class="text">Food Plaza <br> 336, abc Street,<br> Rajkot, 360004
 								</div>
@@ -422,7 +426,7 @@
 		<div class="popup-inner">
 			<div class="overlay-layer"></div>
 			<div class="search-form">
-				<form method="post" action="http://designarc.biz/demos/wengdo/index.html">
+				<form method="post" action="http://designarc.biz/demos/wengdo/index.php">
 					<div class="form-group">
 						<fieldset>
 							<input type="search" class="form-control" name="search-input" value=""
@@ -463,5 +467,5 @@
 </body>
 
 
-<!-- Mirrored from designarc.biz/demos/wengdo/shoping-cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Dec 2021 09:11:12 GMT -->
+<!-- Mirrored from designarc.biz/demos/wengdo/shoping-cart.php by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Dec 2021 09:11:12 GMT -->
 </html>

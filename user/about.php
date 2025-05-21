@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Food Template</title>
+	<title>Food Order</title>
 	<!-- Stylesheets -->
 	<link href="assets/css/bootstrap.css" rel="stylesheet">
 
@@ -39,45 +39,13 @@
 	<div class="preloader"></div>
 
 	<header class="main-header">
-		<!--Header Top-->
-		<div class="header-top" style="background-color:#f2e39c; color:black">
-			<div class="auto-container clearfix">
-				<div class="top-left">
-					<!-- Info List -->
-					<ul class="info-list">
-
-						<li><a href="mailto:info@abc.co.in" style="color: black"><span class="icon far fa-envelope"></span>
-									info@abc.co.in</a></li>
-					</ul>
-				</div>
-				<div class="top-right clearfix">
-
-					<!--Social Box-->
-					<ul class="social-box">
-						<li><a href="#" style="color: black"><span class="fa fa-user-alt"></span></a></li>
-					</ul>
-					<div class="option-list">
-						<!-- Cart Button -->
-						<div class="cart-btn">
-							<a href="shoping-cart.html" class="icon flaticon-shopping-cart" style="color: black"><span
-									class="total-cart" style="background-color: #a40301;color:white">3</span></a>
-						</div>
-						<!-- Search Btn -->
-
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Header Top -->
-
-		<!-- Header Upper -->
 		<div class="header-upper">
 			<div class="inner-container">
 				<div class="auto-container clearfix">
 					<!--Info-->
 					<div class="logo-outer">
-						<div class="logo" style="margin-top: -20px;"><a href="index-2.html"><img src="assets/images/logo-02.png" alt=""
-																								 title=""></a></div>
+						<div class="logo" style="margin-top: -20px;"><img src="assets/images/logo-02.png" alt=""
+																								 title=""></div>
 					</div>
 
 					<!--Nav Box-->
@@ -95,30 +63,14 @@
 
 							<div class="collapse navbar-collapse clearfix" id="navbarSupportedContent">
 								<ul class="navigation clearfix">
-									<li class="current dropdown"><a href="#">Home</a>
-										<ul>
-											<li><a href="index-2.html">Home Page 01</a></li>
-											<li class="dropdown"><a href="#">Other</a>
-												<ul>
-													<li><a href="#">Sub Menu01</a></li>
-													<li><a href="#">Sub Menu02</a></li>
-													<li><a href="#">Sub Menu03</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-
-
-									<li><a href="gallery.html">Gallery</a></li>
-
 									<li class="dropdown"><a href="#">User</a>
 										<ul>
-											<li><a href="login.html">Login</a></li>
-											<li><a href="registration.html">Register</a></li>
+											<li><a href="login.php">Login</a></li>
+											<li><a href="registration.php">Register</a></li>
 										</ul>
 									</li>
-									<li><a href="about.html">About Us</a></li>
-									<li><a href="contact.html">Contact</a></li>
+									<li class="current"><a href="about.php">About Us</a></li>
+									<li><a href="contact.php">Contact</a></li>
 								</ul>
 							</div>
 						</nav>
@@ -142,8 +94,8 @@
 			<div class="auto-container clearfix">
 				<!--Logo-->
 				<div class="logo pull-left">
-					<a href="index-2.html" class="img-responsive"><img src="assets/images/logo-02.png" alt=""
-																	   title="" height="90" width="90" style="margin-top: -10px;"></a>
+					<img src="assets/images/logo-02.png" alt=""
+																	   title="" height="90" width="90" style="margin-top: -10px;">
 				</div>
 
 				<!--Right Col-->
@@ -160,30 +112,15 @@
 
 						<div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
 							<ul class="navigation clearfix">
-								<li class="current dropdown"><a href="#">Home</a>
-									<ul>
-										<li><a href="index-2.html">Home Page 01</a></li>
-										<li class="dropdown"><a href="#">Other</a>
-											<ul>
-												<li><a href="#">Sub Menu01</a></li>
-												<li><a href="#">Sub Menu02</a></li>
-												<li><a href="#">Sub Menu03</a></li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-
-
-								<li><a href="gallery.html">Gallery</a></li>
 
 								<li class="dropdown"><a href="#">User</a>
 									<ul>
-										<li><a href="shops.html">Login</a></li>
-										<li><a href="shop-single.html">Register</a></li>
+										<li><a href="login.php">Login</a></li>
+										<li><a href="registration.php">Register</a></li>
 									</ul>
 								</li>
-								<li><a href="about.html">About Us</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="about.php">About Us</a></li>
+								<li><a href="contact.php">Contact</a></li>
 							</ul>
 						</div>
 					</nav><!-- Main Menu End-->
@@ -201,10 +138,6 @@
 		<section class="page-title" style="background-image: url(assets/images/background/11.jpg)">
 			<div class="auto-container">
 				<h1>About Us</h1>
-				<ul class="bread-crumb clearfix">
-					<li><a href="index-2.html">Home</a></li>
-					<li>About Us</li>
-				</ul>
 			</div>
 		</section>
 		<!-- End Page Title -->
@@ -378,7 +311,7 @@
 							<!-- Logo Widget -->
 							<div class="footer-widget logo-widget">
 								<div class="logo">
-									<a href="index-2.html"><img src="assets/images/logo-02.png" alt="" style="margin-top: -20px;" /></a>
+									<img src="assets/images/logo-02.png" alt="" style="margin-top: -20px;" />
 								</div>
 								<div class="text">Food Plaza <br> 336, abc Street,<br> Rajkot, 360004
 								</div>
@@ -429,7 +362,7 @@
 	<div class="popup-inner">
 		<div class="overlay-layer"></div>
 		<div class="search-form">
-			<form method="post" action="http://designarc.biz/demos/wengdo/index.html">
+			<form method="post" action="http://designarc.biz/demos/wengdo/index.php">
 				<div class="form-group">
 					<fieldset>
 						<input type="search" class="form-control" name="search-input" value=""

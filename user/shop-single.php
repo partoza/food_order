@@ -1,8 +1,13 @@
+<?php
+session_start();
+include 'helpers/authenticated.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-  <title>Food Template</title>
+  <title>Food Order</title>
     <!-- Stylesheets -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
 
@@ -59,7 +64,7 @@
                     <div class="option-list">
                         <!-- Cart Button -->
                         <div class="cart-btn">
-                            <a href="shoping-cart.html" class="icon flaticon-shopping-cart" style="color: black"><span
+                            <a href="shoping-cart.php" class="icon flaticon-shopping-cart" style="color: black"><span
                                     class="total-cart" style="background-color: #a40301;color:white">3</span></a>
                         </div>
                         <!-- Search Btn -->
@@ -76,7 +81,7 @@
                 <div class="auto-container clearfix">
                     <!--Info-->
                     <div class="logo-outer">
-                        <div class="logo" style="margin-top: -20px;"><a href="index-2.html"><img src="assets/images/logo-02.png" alt=""
+                        <div class="logo" style="margin-top: -20px;"><a href="index-2.php"><img src="assets/images/logo-02.png" alt=""
                                                                                                  title=""></a></div>
                     </div>
 
@@ -97,7 +102,7 @@
                                 <ul class="navigation clearfix">
                                     <li class="current dropdown"><a href="#">Home</a>
                                         <ul>
-                                            <li><a href="index-2.html">Home Page 01</a></li>
+                                            <li><a href="index-2.php">Home Page 01</a></li>
                                             <li class="dropdown"><a href="#">Other</a>
                                                 <ul>
                                                     <li><a href="#">Sub Menu01</a></li>
@@ -109,16 +114,16 @@
                                     </li>
 
 
-                                    <li><a href="gallery.html">Gallery</a></li>
+                                    <li><a href="gallery.php">Gallery</a></li>
 
                                     <li class="dropdown"><a href="#">User</a>
                                         <ul>
-                                            <li><a href="login.html">Login</a></li>
-                                            <li><a href="registration.html">Register</a></li>
+                                            <li><a href="login.php">Login</a></li>
+                                            <li><a href="registration.php">Register</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="about.php">About Us</a></li>
+                                    <li><a href="contact.php">Contact</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -142,7 +147,7 @@
             <div class="auto-container clearfix">
                 <!--Logo-->
                 <div class="logo pull-left">
-                    <a href="index-2.html" class="img-responsive"><img src="assets/images/logo-02.png" alt=""
+                    <a href="index-2.php" class="img-responsive"><img src="assets/images/logo-02.png" alt=""
                                                                        title="" height="90" width="90" style="margin-top: -10px;"></a>
                 </div>
 
@@ -162,7 +167,7 @@
                             <ul class="navigation clearfix">
                                 <li class="current dropdown"><a href="#">Home</a>
                                     <ul>
-                                        <li><a href="index-2.html">Home Page 01</a></li>
+                                        <li><a href="index-2.php">Home Page 01</a></li>
                                         <li class="dropdown"><a href="#">Other</a>
                                             <ul>
                                                 <li><a href="#">Sub Menu01</a></li>
@@ -174,16 +179,16 @@
                                 </li>
 
 
-                                <li><a href="gallery.html">Gallery</a></li>
+                                <li><a href="gallery.php">Gallery</a></li>
 
                                 <li class="dropdown"><a href="#">User</a>
                                     <ul>
-                                        <li><a href="shops.html">Login</a></li>
-                                        <li><a href="shop-single.html">Register</a></li>
+                                        <li><a href="shops.php">Login</a></li>
+                                        <li><a href="shop-single.php">Register</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="about.php">About Us</a></li>
+                                <li><a href="contact.php">Contact</a></li>
                             </ul>
                         </div>
                     </nav><!-- Main Menu End-->
@@ -203,8 +208,8 @@
             <div class="auto-container">
                 <h1>Product Details</h1>
                 <ul class="bread-crumb clearfix">
-                    <li><a href="index-2.html">Home</a></li>
-                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="index-2.php">Home</a></li>
+                    <li><a href="shop.php">Shop</a></li>
                     <li>Product Details</li>
                 </ul>
             </div>
@@ -375,7 +380,7 @@
                                                             class="fa fa-star"></span></a>
                                                 </div>
                                             </div>
-                                            <form method="post" action="http://designarc.biz/demos/wengdo/contact.html">
+                                            <form method="post" action="http://designarc.biz/demos/wengdo/contact.php">
                                                 <div class="row clearfix">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 form-group">
                                                         <label>First Name *</label>
@@ -437,11 +442,11 @@
                                 <img src="assets/images/resource/products/1.jpg" alt="">
                             </figure>
                             <div class="lower-content">
-                                <h4><a href="shop-single.html">Chicken Burger</a></h4>
+                                <h4><a href="shop-single.php">Chicken Burger</a></h4>
                                 <div class="text">Our flavors & ingredients to build our local burgers.</div>
                                 <div class="price">$17.00</div>
                                 <div class="lower-box">
-                                    <a href="shop-single.html" class="theme-btn btn-style-five"><span class="txt">Order
+                                    <a href="shop-single.php" class="theme-btn btn-style-five"><span class="txt">Order
                                             Now</span></a>
                                 </div>
                             </div>
@@ -455,11 +460,11 @@
                                 <img src="assets/images/resource/products/2.jpg" alt="">
                             </figure>
                             <div class="lower-content">
-                                <h4><a href="shop-single.html">Classic Smash</a></h4>
+                                <h4><a href="shop-single.php">Classic Smash</a></h4>
                                 <div class="text">Our flavors & ingredients to build our local burgers.</div>
                                 <div class="price">$17.00</div>
                                 <div class="lower-box">
-                                    <a href="shop-single.html" class="theme-btn btn-style-five"><span class="txt">Order
+                                    <a href="shop-single.php" class="theme-btn btn-style-five"><span class="txt">Order
                                             Now</span></a>
                                 </div>
                             </div>
@@ -473,11 +478,11 @@
                                 <img src="assets/images/resource/products/1.jpg" alt="">
                             </figure>
                             <div class="lower-content">
-                                <h4><a href="shop-single.html">Classic Smash</a></h4>
+                                <h4><a href="shop-single.php">Classic Smash</a></h4>
                                 <div class="text">Our flavors & ingredients to build our local burgers.</div>
                                 <div class="price">$17.00</div>
                                 <div class="lower-box">
-                                    <a href="shop-single.html" class="theme-btn btn-style-five"><span class="txt">Order
+                                    <a href="shop-single.php" class="theme-btn btn-style-five"><span class="txt">Order
                                             Now</span></a>
                                 </div>
                             </div>
@@ -491,11 +496,11 @@
                                 <img src="assets/images/resource/products/3.jpg" alt="">
                             </figure>
                             <div class="lower-content">
-                                <h4><a href="shop-single.html">Classic Smash</a></h4>
+                                <h4><a href="shop-single.php">Classic Smash</a></h4>
                                 <div class="text">Our flavors & ingredients to build our local burgers.</div>
                                 <div class="price">$17.00</div>
                                 <div class="lower-box">
-                                    <a href="shop-single.html" class="theme-btn btn-style-five"><span class="txt">Order
+                                    <a href="shop-single.php" class="theme-btn btn-style-five"><span class="txt">Order
                                             Now</span></a>
                                 </div>
                             </div>
@@ -533,7 +538,7 @@
 							<!-- Logo Widget -->
 							<div class="footer-widget logo-widget">
 								<div class="logo">
-									<a href="index-2.html"><img src="assets/images/logo-02.png" alt="" style="margin-top: -20px;" /></a>
+									<a href="index-2.php"><img src="assets/images/logo-02.png" alt="" style="margin-top: -20px;" /></a>
 								</div>
 								<div class="text">Food Plaza <br> 336, abc Street,<br> Rajkot, 360004
 								</div>
@@ -584,7 +589,7 @@
         <div class="popup-inner">
             <div class="overlay-layer"></div>
             <div class="search-form">
-                <form method="post" action="http://designarc.biz/demos/wengdo/index.html">
+                <form method="post" action="http://designarc.biz/demos/wengdo/index.php">
                     <div class="form-group">
                         <fieldset>
                             <input type="search" class="form-control" name="search-input" value=""
@@ -625,5 +630,5 @@
 </body>
 
 
-<!-- Mirrored from designarc.biz/demos/wengdo/shop-single.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Dec 2021 09:10:25 GMT -->
+<!-- Mirrored from designarc.biz/demos/wengdo/shop-single.php by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Dec 2021 09:10:25 GMT -->
 </html>

@@ -1,8 +1,14 @@
+<?php
+session_start();
+include 'helpers/authenticated.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
-	<title>Food Template</title>
+	<title>Food Order</title>
 	<!-- Stylesheets -->
 	<link href="assets/css/bootstrap.css" rel="stylesheet">
 
@@ -46,7 +52,8 @@
 						<!-- Info List -->
 						<ul class="info-list">
 
-							<li><a href="mailto:info@abc.co.in" style="color: black"><span class="icon far fa-envelope"></span>
+							<li><a href="mailto:info@abc.co.in" style="color: black"><span
+										class="icon far fa-envelope"></span>
 									info@abc.co.in</a></li>
 						</ul>
 					</div>
@@ -59,8 +66,9 @@
 						<div class="option-list">
 							<!-- Cart Button -->
 							<div class="cart-btn">
-								<a href="shoping-cart.html" class="icon flaticon-shopping-cart" style="color: black"><span
-										class="total-cart" style="background-color: #a40301;color:white">3</span></a>
+								<a href="shoping-cart.php" class="icon flaticon-shopping-cart"
+									style="color: black"><span class="total-cart"
+										style="background-color: #a40301;color:white">3</span></a>
 							</div>
 							<!-- Search Btn -->
 
@@ -76,8 +84,8 @@
 					<div class="auto-container clearfix">
 						<!--Info-->
 						<div class="logo-outer">
-							<div class="logo" style="margin-top: -20px;"><a href="index-2.html"><img src="assets/images/logo-02.png" alt=""
-										title=""></a></div>
+							<div class="logo" style="margin-top: -20px;"><a href="index-2.php"><img
+										src="assets/images/logo-02.png" alt="" title=""></a></div>
 						</div>
 
 						<!--Nav Box-->
@@ -85,7 +93,7 @@
 							<!-- Main Menu -->
 							<nav class="main-menu navbar-expand-md navbar-light">
 								<div class="navbar-header">
-									<!-- Togg le Button -->
+									<!-- Toggle Button -->
 									<button class="navbar-toggler" type="button" data-toggle="collapse"
 										data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 										aria-expanded="false" aria-label="Toggle navigation">
@@ -95,30 +103,10 @@
 
 								<div class="collapse navbar-collapse clearfix" id="navbarSupportedContent">
 									<ul class="navigation clearfix">
-										<li class="current dropdown"><a href="#">Home</a>
-											<ul>
-												<li><a href="index-2.html">Home Page 01</a></li>
-												<li class="dropdown"><a href="#">Other</a>
-													<ul>
-														<li><a href="#">Sub Menu01</a></li>
-														<li><a href="#">Sub Menu02</a></li>
-														<li><a href="#">Sub Menu03</a></li>
-													</ul>
-												</li>
-											</ul>
-										</li>
-
-
-										<li><a href="gallery.html">Gallery</a></li>
-
-										<li class="dropdown"><a href="#">User</a>
-											<ul>
-												<li><a href="login.html">Login</a></li>
-												<li><a href="registration.html">Register</a></li>
-											</ul>
-										</li>
-										<li><a href="about.html">About Us</a></li>
-										<li><a href="contact.html">Contact</a></li>
+										<li class="current"><a href="#">Home</a></li>
+										<li><a href="gallery.php">Gallery</a></li>
+										<li><a href="profile.php">Profile</a></li>
+										<li><a href="handlers/logout_handler.php">Logout</a></li>
 									</ul>
 								</div>
 							</nav>
@@ -142,7 +130,7 @@
 				<div class="auto-container clearfix">
 					<!--Logo-->
 					<div class="logo pull-left">
-						<a href="index-2.html" class="img-responsive"><img src="assets/images/logo-02.png" alt=""
+						<a href="index-2.php" class="img-responsive"><img src="assets/images/logo-02.png" alt=""
 								title="" height="90" width="90" style="margin-top: -10px;"></a>
 					</div>
 
@@ -160,30 +148,10 @@
 
 							<div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
 								<ul class="navigation clearfix">
-									<li class="current dropdown"><a href="#">Home</a>
-										<ul>
-											<li><a href="index-2.html">Home Page 01</a></li>
-											<li class="dropdown"><a href="#">Other</a>
-												<ul>
-													<li><a href="#">Sub Menu01</a></li>
-													<li><a href="#">Sub Menu02</a></li>
-													<li><a href="#">Sub Menu03</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-
-
-									<li><a href="gallery.html">Gallery</a></li>
-
-									<li class="dropdown"><a href="#">User</a>
-										<ul>
-											<li><a href="shops.html">Login</a></li>
-											<li><a href="shop-single.html">Register</a></li>
-										</ul>
-									</li>
-									<li><a href="about.html">About Us</a></li>
-									<li><a href="contact.html">Contact</a></li>
+									<li class="current"><a href="#">Home</a></li>
+									<li><a href="gallery.php">Gallery</a></li>
+									<li><a href="profile.php">Profile</a></li>
+									<li><a href="profile.php">Logout</a></li>
 								</ul>
 							</div>
 						</nav><!-- Main Menu End-->
@@ -445,155 +413,133 @@
 							<li class="active filter" data-role="button" data-filter="all">All</li>
 							<li class="filter" data-role="button" data-filter=".pizza">Pizza</li>
 							<li class="filter" data-role="button" data-filter=".burgers">Burgers</li>
-							<li class="filter" data-role="button" data-filter=".wraps">Wraps</li>
 							<li class="filter" data-role="button" data-filter=".fries">Fries</li>
-							<li class="filter" data-role="button" data-filter=".salad">Salad</li>
-							<li class="filter" data-role="button" data-filter=".fest">Spice fest</li>
 							<li class="filter" data-role="button" data-filter=".beverages">Beverages</li>
 						</ul>
 					</div>
 
 					<div class="filter-list row clearfix">
 
-						<!-- Products Block -->
-						<div class="product-block all mix salad fest wraps fries col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<figure class="image-box">
-									<img src="assets/images/resource/products/1.jpg" alt="">
-								</figure>
-								<div class="lower-content">
-									<h4><a href="shop-single.html">Chicken Burger</a></h4>
-									<div class="text">Our flavors & ingredients to build our local burgers.</div>
-									<div class="price">$17.00</div>
-									<div class="lower-box">
-										<a href="shop-single.html" class="theme-btn btn-style-five"><span
-												class="txt">Order Now</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Products Block -->
-						<div class="product-block all mix beverages wraps col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<figure class="image-box">
-									<img src="assets/images/resource/products/2.jpg" alt="">
-								</figure>
-								<div class="lower-content">
-									<h4><a href="shop-single.html">Classic Smash</a></h4>
-									<div class="text">Our flavors & ingredients to build our local burgers.</div>
-									<div class="price">$17.00</div>
-									<div class="lower-box">
-										<a href="shop-single.html" class="theme-btn btn-style-five"><span
-												class="txt">Order Now</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Products Block -->
-						<div class="product-block all mix salad fest burgers beverages col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<figure class="image-box">
-									<img src="assets/images/resource/products/1.jpg" alt="">
-								</figure>
-								<div class="lower-content">
-									<h4><a href="shop-single.html">Classic Smash</a></h4>
-									<div class="text">Our flavors & ingredients to build our local burgers.</div>
-									<div class="price">$17.00</div>
-									<div class="lower-box">
-										<a href="shop-single.html" class="theme-btn btn-style-five"><span
-												class="txt">Order Now</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Products Block -->
-						<div class="product-block all mix burgers col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<figure class="image-box">
-									<img src="assets/images/resource/products/3.jpg" alt="">
-								</figure>
-								<div class="lower-content">
-									<h4><a href="shop-single.html">Classic Smash</a></h4>
-									<div class="text">Our flavors & ingredients to build our local burgers.</div>
-									<div class="price">$17.00</div>
-									<div class="lower-box">
-										<a href="shop-single.html" class="theme-btn btn-style-five"><span
-												class="txt">Order Now</span></a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Products Block -->
-						<div class="product-block all mix pizza wraps beverages col-lg-3 col-md-6 col-sm-12">
+						<!-- Pizza + Beverages -->
+						<div class="product-block all burgers col-lg-3 col-md-6 col-sm-12">
 							<div class="inner-box">
 								<figure class="image-box">
 									<img src="assets/images/resource/products/4.jpg" alt="">
 								</figure>
 								<div class="lower-content">
-									<h4><a href="shop-single.html">Chicken Burger</a></h4>
+									<h4><a href="shop-single.php">Chicken Burger</a></h4>
 									<div class="text">Our flavors & ingredients to build our local burgers.</div>
 									<div class="price">$17.00</div>
 									<div class="lower-box">
-										<a href="shop-single.html" class="theme-btn btn-style-five"><span
+										<a href="shop-single.php" class="theme-btn btn-style-five"><span
 												class="txt">Order Now</span></a>
 									</div>
 								</div>
 							</div>
 						</div>
 
-						<!-- Products Block -->
-						<div class="product-block all mix salad pizza burgers fries col-lg-3 col-md-6 col-sm-12">
+						<!-- Salad + Pizza + Burgers + Fries -->
+						<div class="product-block all beverages col-lg-3 col-md-6 col-sm-12">
 							<div class="inner-box">
 								<figure class="image-box">
 									<img src="assets/images/resource/products/5.jpg" alt="">
 								</figure>
 								<div class="lower-content">
-									<h4><a href="shop-single.html">Soft Drink</a></h4>
+									<h4><a href="shop-single.php">Soft Drink</a></h4>
 									<div class="text">Our flavors & ingredients to build our local burgers.</div>
 									<div class="price">$17.00</div>
 									<div class="lower-box">
-										<a href="shop-single.html" class="theme-btn btn-style-five"><span
+										<a href="shop-single.php" class="theme-btn btn-style-five"><span
 												class="txt">Order Now</span></a>
 									</div>
 								</div>
 							</div>
 						</div>
 
-						<!-- Products Block -->
-						<div class="product-block all mix salad wraps pizza fries col-lg-3 col-md-6 col-sm-12">
+						<!-- Salad + Wraps + Pizza + Fries -->
+						<div class="product-block all pizza col-lg-3 col-md-6 col-sm-12">
 							<div class="inner-box">
 								<figure class="image-box">
 									<img src="assets/images/resource/products/6.jpg" alt="">
 								</figure>
 								<div class="lower-content">
-									<h4><a href="shop-single.html">Classic Smash</a></h4>
+									<h4><a href="shop-single.php">Pizza 2</a></h4>
 									<div class="text">Our flavors & ingredients to build our local burgers.</div>
 									<div class="price">$17.00</div>
 									<div class="lower-box">
-										<a href="shop-single.html" class="theme-btn btn-style-five"><span
+										<a href="shop-single.php" class="theme-btn btn-style-five"><span
 												class="txt">Order Now</span></a>
 									</div>
 								</div>
 							</div>
 						</div>
 
-						<!-- Products Block -->
-						<div
-							class="product-block all mix pizza wraps burgers beverages salad col-lg-3 col-md-6 col-sm-12">
+						<!-- Pizza + Wraps + Burgers + Beverages + Salad -->
+						<div class="product-block all burgers col-lg-3 col-md-6 col-sm-12">
 							<div class="inner-box">
 								<figure class="image-box">
 									<img src="assets/images/resource/products/1.jpg" alt="">
 								</figure>
 								<div class="lower-content">
-									<h4><a href="shop-single.html">Classic Smash</a></h4>
+									<h4><a href="shop-single.php">Burger 2</a></h4>
 									<div class="text">Our flavors & ingredients to build our local burgers.</div>
 									<div class="price">$17.00</div>
 									<div class="lower-box">
-										<a href="shop-single.html" class="theme-btn btn-style-five"><span
+										<a href="shop-single.php" class="theme-btn btn-style-five"><span
+												class="txt">Order Now</span></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Beverages + Wraps -->
+						<div class="product-block all pizza wraps col-lg-3 col-md-6 col-sm-12">
+							<div class="inner-box">
+								<figure class="image-box">
+									<img src="assets/images/resource/products/2.jpg" alt="">
+								</figure>
+								<div class="lower-content">
+									<h4><a href="shop-single.php">Pizza 1</a></h4>
+									<div class="text">Our flavors & ingredients to build our local burgers.</div>
+									<div class="price">$17.00</div>
+									<div class="lower-box">
+										<a href="shop-single.php" class="theme-btn btn-style-five"><span
+												class="txt">Order Now</span></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Salad + Fest + Burgers + Beverages -->
+						<div class="product-block all burgers col-lg-3 col-md-6 col-sm-12">
+							<div class="inner-box">
+								<figure class="image-box">
+									<img src="assets/images/resource/products/1.jpg" alt="">
+								</figure>
+								<div class="lower-content">
+									<h4><a href="shop-single.php">Burger 1</a></h4>
+									<div class="text">Our flavors & ingredients to build our local burgers.</div>
+									<div class="price">$17.00</div>
+									<div class="lower-box">
+										<a href="shop-single.php" class="theme-btn btn-style-five"><span
+												class="txt">Order Now</span></a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Burgers -->
+						<div class="product-block all fries col-lg-3 col-md-6 col-sm-12">
+							<div class="inner-box">
+								<figure class="image-box">
+									<img src="assets/images/resource/products/3.jpg" alt="">
+								</figure>
+								<div class="lower-content">
+									<h4><a href="shop-single.php">Fries</a></h4>
+									<div class="text">Our flavors & ingredients to build our local burgers.</div>
+									<div class="price">$17.00</div>
+									<div class="lower-box">
+										<a href="shop-single.php" class="theme-btn btn-style-five"><span
 												class="txt">Order Now</span></a>
 									</div>
 								</div>
@@ -601,9 +547,7 @@
 						</div>
 
 					</div>
-
 				</div>
-
 			</div>
 		</section>
 		<!-- End Products Section -->
@@ -633,7 +577,7 @@
 								<p>If you’re having a meeting, working late at night and need an extra push.</p>
 								<p>Let us know and we will be there</p>
 							</div>
-							<a href="shop-single.html" class="theme-btn btn-style-three"><span class="txt">Order
+							<a href="shop-single.php" class="theme-btn btn-style-three"><span class="txt">Order
 									Now</span></a>
 						</div>
 					</div>
@@ -722,7 +666,7 @@
 								<div class="inner-column">
 									<!--Emailed Form-->
 									<div class="emailed-form">
-										<form method="post" action="http://designarc.biz/demos/wengdo/contact.html">
+										<form method="post" action="http://designarc.biz/demos/wengdo/contact.php">
 											<div class="form-group">
 												<input type="email" name="email" value=""
 													placeholder="Enter your email address" required>
@@ -876,7 +820,8 @@
 							<!-- Logo Widget -->
 							<div class="footer-widget logo-widget">
 								<div class="logo">
-									<a href="index-2.html"><img src="assets/images/logo-02.png" alt="" style="margin-top: -20px;" /></a>
+									<a href="index-2.php"><img src="assets/images/logo-02.png" alt=""
+											style="margin-top: -20px;" /></a>
 								</div>
 								<div class="text">Food Plaza <br> 336, abc Street,<br> Rajkot, 360004
 								</div>
@@ -927,7 +872,7 @@
 		<div class="popup-inner">
 			<div class="overlay-layer"></div>
 			<div class="search-form">
-				<form method="post" action="http://designarc.biz/demos/wengdo/index.html">
+				<form method="post" action="http://designarc.biz/demos/wengdo/index.php">
 					<div class="form-group">
 						<fieldset>
 							<input type="search" class="form-control" name="search-input" value=""
@@ -967,13 +912,17 @@
 	<script src="assets/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
 	<script src="assets/vendors/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
 	<script src="assets/vendors/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-
 	<script src="assets/js/jquery.fancybox.js"></script>
 	<script src="assets/js/owl.js"></script>
 	<script src="assets/js/wow.js"></script>
 	<script src="assets/js/mixitup.js"></script>
 	<script src="assets/js/appear.js"></script>
 	<script src="assets/js/script.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/mixitup@3/dist/mixitup.min.js"></script>
+	<script>
+		var mixer = mixitup('.filter-list');
+	</script>
 
 </body>
+
 </html>

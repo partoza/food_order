@@ -1,9 +1,7 @@
 <?php
 
-session_start();
-
 if (isset($_SESSION['access_token']) || isset($_COOKIE['access_token'])) {
   // Redirect authenticated users to the homepage or dashboard
-  header("Location: views-authenticated/index-2.php");
+  header("Location: ../user/index-2.php");
   exit;
 }

@@ -1,9 +1,9 @@
 <?php
 
 $servername = "localhost";
-$username = "root";  
-$password = "";  
-$dbname = "food_order";    
+$username = "root";
+$password = "";
+$dbname = "food_order";
 
 $conn = new mysqli($servername, $username, $password);
 
@@ -15,9 +15,7 @@ $checkDbQuery = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEM
 $result = $conn->query($checkDbQuery);
 
 if ($result->num_rows == 0) {
-    if ($conn->query("CREATE DATABASE $dbname") === TRUE) {
-        echo "Database '$dbname' created successfully.<br>";
-    } else {
+    if (!$conn->query("CREATE DATABASE `$dbname`")) {
         die("Error creating database: " . $conn->error);
     }
 }
@@ -38,12 +36,12 @@ $sql = "CREATE TABLE IF NOT EXISTS users (
     INDEX (email)
 )";
 
-if ($conn->query($sql) === TRUE) {
-    echo "Table 'users' created successfully or already exists.";
-} else {
-    echo "Error creating table: " . $conn->error;
-}
+// first time on, uncomment this, just comment once db already created
 
-// Close connection
-$conn->close();
+// if ($conn->query($sql) === TRUE) {
+//     echo "Table 'users' created successfully or already exists.";
+// } else {
+//     echo "Error creating table: " . $conn->error;
+// }
+
 ?>
