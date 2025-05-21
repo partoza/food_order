@@ -336,72 +336,83 @@ if (isset($_SESSION['user_id'])) {
 		<!--Cart Section-->
 		<section class="cart-section">
 			<div class="auto-container">
-
 				<!--Cart Outer-->
 				<div class="cart-outer">
-					<div class="table-outer">
-						<table class="cart-table">
-							<thead class="cart-header">
-								<tr>
-									<th>Preview</th>
-									<th class="prod-column">product</th>
-									<th class="price">Price</th>
-									<th>Quantity</th>
-									<th>Total</th>
-									<th>&nbsp;</th>
-								</tr>
-							</thead>
+					<?php if (isset($_SESSION['order_error'])): ?>
+						<div class="alert alert-danger"><?= $_SESSION['order_error'] ?></div>
+						<?php unset($_SESSION['order_error']); ?>
+					<?php endif; ?>
+					<form action="handlers/place_order_handler.php" method="POST">
+						<div class="table-outer">
+							<table class="cart-table">
+								<thead class="cart-header">
+									<tr>
+										<th>Preview</th>
+										<th class="prod-column">Product</th>
+										<th class="price">Price</th>
+										<th>Quantity</th>
+										<th>Total</th>
+										<th>&nbsp;</th>
+									</tr>
+								</thead>
 
-							<tbody>
-								<?php if ($items && $items->num_rows > 0): ?>
-									<?php $grandTotal = 0; ?>
-									<?php while ($item = $items->fetch_assoc()): ?>
-										<?php $subTotal = $item['price'] * $item['quantity']; ?>
-										<?php $grandTotal += $subTotal; ?>
-										<tr>
-											<td class="prod-column">
-												<div class="column-box">
-													<figure class="prod-thumb">
-														<a href="#"><img src="<?= htmlspecialchars($item['image_path']) ?>" alt=""></a>
-													</figure>
-												</div>
-											</td>
-											<td><h4 class="prod-title"><?= htmlspecialchars($item['name']) ?></h4></td>
-											<td class="sub-total">$<?= number_format($item['price'], 2) ?></td>
-											<td class="qty">
-												<div class="item-quantity">
-													<input class="quantity-spinner" type="number" value="<?= $item['quantity'] ?>" name="quantity[<?= $item['cart_item_id'] ?>]" min="1">
-												</div>
-											</td>
-											<td class="price">$<?= number_format($subTotal, 2) ?></td>
-											<td><a href="handlers/remove_from_cart.php?id=<?= $item['cart_item_id'] ?>" class="remove-btn"><span class="fa fa-times"></span></a></td>
-										</tr>
-									<?php endwhile; ?>
-								<?php else: ?>
-									<tr><td colspan="6">Your cart is empty.</td></tr>
-								<?php endif; ?>
-							</tbody>
-						</table>
-					</div>
+								<tbody>
+									<?php if ($items && $items->num_rows > 0): ?>
+										<?php $grandTotal = 0; ?>
+										<?php while ($item = $items->fetch_assoc()): ?>
+											<?php
+												$subTotal = $item['price'] * $item['quantity'];
+												$grandTotal += $subTotal;
+												$cartItemId = $item['cart_item_id'];
+											?>
+											<tr>
+												<td class="prod-column">
+													<div class="column-box">
+														<figure class="prod-thumb">
+															<a href="#"><img src="<?= htmlspecialchars($item['image_path']) ?>" alt=""></a>
+														</figure>
+													</div>
+												</td>
+												<td><h4 class="prod-title"><?= htmlspecialchars($item['name']) ?></h4></td>
+												<td class="sub-total">$<?= number_format($item['price'], 2) ?></td>
+												<td class="qty">
+													<div class="item-quantity">
+														<input class="quantity-spinner" type="number" value="<?= $item['quantity'] ?>" name="quantities[<?= $cartItemId ?>]" min="1">
+													</div>
+												</td>
+												<td class="price">$<?= number_format($subTotal, 2) ?></td>
+												<td><a href="handlers/remove_from_cart.php?id=<?= $cartItemId ?>" class="remove-btn"><span class="fa fa-times"></span></a></td>
 
-					<div class="row clearfix">
-
-						<div class="column col-lg-7 col-md-12 col-sm-12"></div>
-
-						<div class="column pull-right col-lg-5 col-md-12 col-sm-12">
-							<!--Totals Table-->
-							<ul class="totals-table">
-								<li><h3>Cart Totals</h3></li>
-								<li class="clearfix"><span class="col">Sub Total</span><span class="col">$<?= number_format($grandTotal ?? 0, 2) ?></span></li>
-								<li class="clearfix total"><span class="col">Total</span><span class="col price">$<?= number_format($grandTotal ?? 0, 2) ?></span></li>
-								<li class="text-right">
-									<a href="checkout.php" class="theme-btn btn-style-five proceed-btn"><span class="txt">Proceed to Checkout</span></a>
-								</li>
-							</ul>
+												<!-- Hidden inputs to pass product info -->
+												<input type="hidden" name="product_ids[<?= $cartItemId ?>]" value="<?= $item['product_id'] ?>">
+												<input type="hidden" name="prices[<?= $cartItemId ?>]" value="<?= $item['price'] ?>">
+											</tr>
+										<?php endwhile; ?>
+									<?php else: ?>
+										<tr><td colspan="6">Your cart is empty.</td></tr>
+									<?php endif; ?>
+								</tbody>
+							</table>
 						</div>
-					</div>
-				</div>
 
+						<div class="row clearfix">
+							<div class="column col-lg-7 col-md-12 col-sm-12"></div>
+							<div class="column pull-right col-lg-5 col-md-12 col-sm-12">
+								<!--Totals Table-->
+								<ul class="totals-table">
+									<li><h3>Cart Totals</h3></li>
+									<li class="clearfix"><span class="col">Sub Total</span><span class="col">$<?= number_format($grandTotal ?? 0, 2) ?></span></li>
+									<li class="clearfix total"><span class="col">Total</span><span class="col price">$<?= number_format($grandTotal ?? 0, 2) ?></span></li>
+									<li class="text-right">
+										<button type="submit" class="theme-btn btn-style-five proceed-btn">
+											<span class="txt">Place Order</span>
+										</button>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
 		</section>
 		<!--End Cart Section-->

@@ -66,12 +66,17 @@ if (isset($_SESSION['user_id'])) {
 	<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 </head>
 
-<body>
+<?php if (isset($_SESSION['order_success'])): ?>
+        <div class="alert alert-success text-center" style="margin-top: 20px;">
+            <?= $_SESSION['order_success'] ?>
+        </div>
+        <?php unset($_SESSION['order_success']); ?>
+    <?php endif; ?>
 
-	<div class="page-wrapper">
+    <div class="page-wrapper">
 
-		<!-- Preloader -->
-		<div class="preloader"></div>
+        <!-- Preloader -->
+        <div class="preloader"></div>
 
 		<header class="main-header">
 			<!--Header Top-->

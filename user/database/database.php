@@ -74,6 +74,29 @@ $sql3 = "CREATE TABLE IF NOT EXISTS cart_items (
 )";
 $conn->query($sql3);
 
+// 5. orders table
+$sqlOrders = "CREATE TABLE IF NOT EXISTS orders (
+    id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id INT(11) UNSIGNED NOT NULL,
+    total DECIMAL(10,2) NOT NULL,
+    status ENUM('pending', 'processing', 'completed', 'cancelled') DEFAULT 'pending',
+    ordered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+)";
+$conn->query($sqlOrders);
+
+// 6. order_items table
+$sqlOrderItems = "CREATE TABLE IF NOT EXISTS order_items (
+    id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    order_id INT(11) UNSIGNED NOT NULL,
+    product_id INT(11) UNSIGNED NOT NULL,
+    quantity INT(11) NOT NULL DEFAULT 1,
+    price DECIMAL(10,2) NOT NULL, -- store price at time of order
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+)";
+$conn->query($sqlOrderItems);
+
 // 5. Insert sample products (only if table is empty)
 $checkProducts = $conn->query("SELECT COUNT(*) as count FROM products");
 $row = $checkProducts->fetch_assoc();
