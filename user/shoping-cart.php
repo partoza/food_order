@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Food Template</title>
+	<title>Food Order</title>
 	<!-- Stylesheets -->
 	<link href="assets/css/bootstrap.css" rel="stylesheet">
 

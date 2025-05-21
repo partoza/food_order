@@ -39,45 +39,15 @@
     <div class="preloader"></div>
 
     <header class="main-header">
-        <!--Header Top-->
-        <div class="header-top" style="background-color:#f2e39c; color:black">
-            <div class="auto-container clearfix">
-                <div class="top-left">
-                    <!-- Info List -->
-                    <ul class="info-list">
-
-                       <li><a href="mailto:info@abc.co.in" style="color: black"><span class="icon far fa-envelope"></span>
-									info@abc.co.in</a></li>
-                    </ul>
-                </div>
-                <div class="top-right clearfix">
-
-                    <!--Social Box-->
-                    <ul class="social-box">
-                        <li><a href="#" style="color: black"><span class="fa fa-user-alt"></span></a></li>
-                    </ul>
-                    <div class="option-list">
-                        <!-- Cart Button -->
-                        <div class="cart-btn">
-                            <a href="shoping-cart.php" class="icon flaticon-shopping-cart" style="color: black"><span
-                                    class="total-cart" style="background-color: #a40301;color:white">3</span></a>
-                        </div>
-                        <!-- Search Btn -->
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Header Top -->
-
+    
         <!-- Header Upper -->
         <div class="header-upper">
             <div class="inner-container">
                 <div class="auto-container clearfix">
                     <!--Info-->
                     <div class="logo-outer">
-                        <div class="logo" style="margin-top: -20px;"><a href="index-2.php"><img src="assets/images/logo-02.png" alt=""
-                                                                                                 title=""></a></div>
+                        <div class="logo" style="margin-top: -20px;"><img src="assets/images/logo-02.png" alt=""
+                                                                                                 title=""></div>
                     </div>
 
                     <!--Nav Box-->
@@ -95,23 +65,8 @@
 
                             <div class="collapse navbar-collapse clearfix" id="navbarSupportedContent">
                                 <ul class="navigation clearfix">
-                                    <li class="current dropdown"><a href="#">Home</a>
-                                        <ul>
-                                            <li><a href="index-2.php">Home Page 01</a></li>
-                                            <li class="dropdown"><a href="#">Other</a>
-                                                <ul>
-                                                    <li><a href="#">Sub Menu01</a></li>
-                                                    <li><a href="#">Sub Menu02</a></li>
-                                                    <li><a href="#">Sub Menu03</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
 
-
-                                    <li><a href="gallery.php">Gallery</a></li>
-
-                                    <li class="dropdown"><a href="#">User</a>
+                                    <li class="current dropdown"><a href="#">User</a>
                                         <ul>
                                             <li><a href="login.php">Login</a></li>
                                             <li><a href="registration.php">Register</a></li>
@@ -142,8 +97,8 @@
             <div class="auto-container clearfix">
                 <!--Logo-->
                 <div class="logo pull-left">
-                    <a href="index-2.php" class="img-responsive"><img src="assets/images/logo-02.png" alt=""
-                                                                       title="" height="90" width="90" style="margin-top: -10px;"></a>
+                   <img src="assets/images/logo-02.png" alt=""
+                                                                       title="" height="90" width="90" style="margin-top: -10px;">
                 </div>
 
                 <!--Right Col-->
@@ -160,23 +115,7 @@
 
                         <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
                             <ul class="navigation clearfix">
-                                <li class="current dropdown"><a href="#">Home</a>
-                                    <ul>
-                                        <li><a href="index-2.php">Home Page 01</a></li>
-                                        <li class="dropdown"><a href="#">Other</a>
-                                            <ul>
-                                                <li><a href="#">Sub Menu01</a></li>
-                                                <li><a href="#">Sub Menu02</a></li>
-                                                <li><a href="#">Sub Menu03</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-
-
-                                <li><a href="gallery.php">Gallery</a></li>
-
-                                <li class="dropdown"><a href="#">User</a>
+                                <li class="current dropdown"><a href="#">User</a>
                                     <ul>
                                         <li><a href="shops.php">Login</a></li>
                                         <li><a href="shop-single.php">Register</a></li>
@@ -199,10 +138,6 @@
         <section class="page-title" style="background-image: url(assets/images/background/11.jpg)">
             <div class="auto-container">
                 <h1>Login</h1>
-                <ul class="bread-crumb clearfix">
-                    <li><a href="index-2.php">Home</a></li>
-                    <li>Login</li>
-                </ul>
             </div>
         </section>
         <!-- End Page Title -->
@@ -227,10 +162,6 @@
                                     </div>
                                     <div class="billing-inner">
                                         <div class="row clearfix">
-
-                                            <!--Form Group-->
-
-
                                             <!--Form Group-->
                                             <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                                 <div class="field-label">UserName</div>
@@ -253,8 +184,8 @@
 
                                         </div>
                                     </div>
-                                    <ul class="default-links">
-                                        <li>New User? <a href="registration.php" data-toggle="modal" data-target="#schedule-box">Click here to
+                                    <ul>
+                                        <li>New User? <a href="registration.php">Click here to
                                             Register</a></li>
                                     </ul>
                                 </div>
@@ -294,7 +225,7 @@
 							<!-- Logo Widget -->
 							<div class="footer-widget logo-widget">
 								<div class="logo">
-									<a href="index-2.html"><img src="assets/images/logo-02.png" alt="" style="margin-top: -20px;" /></a>
+									<img src="assets/images/logo-02.png" alt="" style="margin-top: -20px;" />
 								</div>
 								<div class="text">Food Plaza <br> 336, abc Street,<br> Rajkot, 360004
 								</div>
