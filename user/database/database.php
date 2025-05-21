@@ -102,13 +102,18 @@ $checkProducts = $conn->query("SELECT COUNT(*) as count FROM products");
 $row = $checkProducts->fetch_assoc();
 if ((int)$row['count'] === 0) {
     $conn->query("INSERT INTO products (name, category, price, description, image_path) VALUES
-    ('Chicken Burger', 'burgers', 17.00, 'Our flavors & ingredients to build our local burgers.', 'assets/images/resource/products/4.jpg'),
-    ('Soft Drink', 'beverages', 17.00, 'Our flavors & ingredients to build our local burgers.', 'assets/images/resource/products/5.jpg'),
-    ('Pizza 2', 'pizza', 17.00, 'Our flavors & ingredients to build our local burgers.', 'assets/images/resource/products/6.jpg'),
-    ('Burger 2', 'burgers', 17.00, 'Our flavors & ingredients to build our local burgers.', 'assets/images/resource/products/1.jpg'),
-    ('Pizza 1', 'pizza', 17.00, 'Our flavors & ingredients to build our local burgers.', 'assets/images/resource/products/2.jpg'),
-    ('Burger 1', 'burgers', 17.00, 'Our flavors & ingredients to build our local burgers.', 'assets/images/resource/products/1.jpg'),
-    ('Fries', 'fries', 17.00, 'Our flavors & ingredients to build our local burgers.', 'assets/images/resource/products/3.jpg')");
+    ('Chicken Burger', 'burgers', 50.00, 'Our flavors & ingredients to build our local burgers.', 'assets/images/resource/products/4.jpg'),
+    ('Soft Drink', 'beverages', 17.00, 'Our flavors & ingredients to build our local beverages.', 'assets/images/resource/products/5.jpg'),
+    ('Hawaiian Pizza', 'pizza', 30.00, 'Our flavors & ingredients to build our local pizza.', 'assets/images/resource/products/6.jpg'),
+    ('Beef Burger', 'burgers', 60.00, 'Our flavors & ingredients to build our local burgers.', 'assets/images/resource/products/1.jpg'),
+    ('Pepperoni Pizza', 'pizza', 35.00, 'Our flavors & ingredients to build our local pizza.', 'assets/images/resource/products/2.jpg'),
+    ('Beef Spicy Burger', 'burgers', 40.00, 'Our flavors & ingredients to build our local burgers.', 'assets/images/resource/products/1.jpg'),
+    ('Fries', 'fries', 25.00, 'Our flavors & ingredients to build our local fries.', 'assets/images/resource/products/3.jpg')");
 }
+ //if ($conn->query($sql) === TRUE) {
+  //echo "Table 'users' created successfully or already exists.";
+ //} else {
+   //  echo "Error creating table: " . $conn->error;
+ //}
 
 ?>

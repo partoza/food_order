@@ -78,33 +78,20 @@ if (isset($_SESSION['user_id'])) {
 			<!--Header Top-->
 			<div class="header-top" style="background-color:#f2e39c; color:black">
 				<div class="auto-container clearfix">
-					<div class="top-left">
-						<!-- Info List -->
-						<ul class="info-list">
-
-							<li><a href="mailto:info@abc.co.in" style="color: black"><span
-										class="icon far fa-envelope"></span>
-									info@abc.co.in</a></li>
-							
-
-						</ul>
-					</div>
 					<div class="top-right clearfix">
-
 						<!--Social Box-->
 						<ul class="social-box">
-							<?php if (isset($_SESSION['username'], $_SESSION['login_time'])): 
+							<?php if (isset($_SESSION['username'], $_SESSION['login_time'])):
 								// Calculate how long they've been logged in
 								$elapsed = time() - $_SESSION['login_time'];
 								$minutes = floor($elapsed / 60);
 								$seconds = $elapsed % 60;
-							?>
+								?>
 								<li style="color:black; padding-left:1em;">
-								Logged in as <strong><?php echo htmlspecialchars($_SESSION['username']); ?></strong>
-								(<?php echo $minutes; ?>m <?php echo $seconds; ?>s)
+									Logged in as <strong><?php echo htmlspecialchars($_SESSION['username']); ?></strong>
+									(<?php echo $minutes; ?>m <?php echo $seconds; ?>s)
 								</li>
 							<?php endif; ?>
-							<li><a href="#" style="color: black"><span class="fa fa-user-alt"></span></a></li>
 						</ul>
 						<div class="option-list">
 							<!-- Cart Button -->
@@ -148,7 +135,7 @@ if (isset($_SESSION['user_id'])) {
 									<ul class="navigation clearfix">
 										<li class="current"><a href="#">Home</a></li>
 										<li><a href="gallery.php">Gallery</a></li>
-										<li><a href="profile.php">Profile</a></li>
+										<li><a href="shoping-cart.php">Cart</a></li>
 										<li><a href="handlers/logout_handler.php">Logout</a></li>
 									</ul>
 								</div>
@@ -193,7 +180,7 @@ if (isset($_SESSION['user_id'])) {
 								<ul class="navigation clearfix">
 									<li class="current"><a href="#">Home</a></li>
 									<li><a href="gallery.php">Gallery</a></li>
-									<li><a href="profile.php">Profile</a></li>
+									<li><a href="shoping-cart.php">Cart</a></li>
 									<li><a href="handlers/logout_handler.php">Logout</a></li>
 								</ul>
 							</div>
@@ -238,7 +225,7 @@ if (isset($_SESSION['user_id'])) {
 								data-width="['670','670','670','400','320']" data-height="none" data-whitespace="normal"
 								data-type="text" data-responsive_offset="on"
 								data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;&quot;,&quot;mask&quot;:&quot;x:0px;y:0px;s:inherit;e:inherit;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:1500,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;y:[175%];&quot;,&quot;mask&quot;:&quot;x:inherit;y:inherit;s:inherit;e:inherit;&quot;,&quot;ease&quot;:&quot;Power2.easeInOut&quot;}]"
-								data-textAlign="['left','left','left','left']">Maxican Burger ...</div>
+								data-textAlign="['left','left','left','left']">Burger ...</div>
 							<div class="tp-caption tp-resizeme middle_text" data-x="['left','left','left','15','15']"
 								data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']"
 								data-voffset="['310','310','310','295','290']"
@@ -444,22 +431,11 @@ if (isset($_SESSION['user_id'])) {
 
 				<!-- Sec Title -->
 				<div class="sec-title centered">
-					<h2>Our Products</h2>
+					<h2>Our Menu</h2>
 				</div>
 
 				<!-- MixitUp Galery -->
 				<div class="mixitup-gallery">
-
-					<!--Filter-->
-					<div class="filters clearfix">
-						<ul class="filter-tabs filter-btns clearfix">
-							<li class="active filter" data-role="button" data-filter="all">All</li>
-							<li class="filter" data-role="button" data-filter=".pizza">Pizza</li>
-							<li class="filter" data-role="button" data-filter=".burgers">Burgers</li>
-							<li class="filter" data-role="button" data-filter=".fries">Fries</li>
-							<li class="filter" data-role="button" data-filter=".beverages">Beverages</li>
-						</ul>
-					</div>
 
 					<div class="filter-list row clearfix">
 

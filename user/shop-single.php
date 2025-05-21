@@ -43,9 +43,10 @@ if (isset($_SESSION['user_id'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
-  <title>Food Order</title>
+    <title>Food Order</title>
     <!-- Stylesheets -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
 
@@ -64,8 +65,8 @@ if (isset($_SESSION['user_id'])) {
     <link rel="icon" href="assets/images/logo-02.png" type="image/x-icon">
 
     <link
-            href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&amp;family=Open+Sans:wght@400;600;700;800&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&amp;family=Poppins:wght@300;400;500;600;700;800;900&amp;display=swap"
-            rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&amp;family=Open+Sans:wght@400;600;700;800&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&amp;family=Poppins:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet">
 
     <!-- Responsive -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -76,21 +77,18 @@ if (isset($_SESSION['user_id'])) {
 
 <body>
 
-<div class="page-wrapper">
+    <div class="page-wrapper">
 
-    <!-- Preloader -->
-    <div class="preloader"></div>
+        <!-- Preloader -->
+        <div class="preloader"></div>
 
-    <header class="main-header">
+        <header class="main-header">
         <!--Header Top-->
         <div class="header-top" style="background-color:#f2e39c; color:black">
             <div class="auto-container clearfix">
                 <div class="top-left">
                     <!-- Info List -->
                     <ul class="info-list">
-
-                       <li><a href="mailto:info@abc.co.in" style="color: black"><span class="icon far fa-envelope"></span>
-									info@abc.co.in</a></li>
                     </ul>
                 </div>
                 <div class="top-right clearfix">
@@ -108,7 +106,6 @@ if (isset($_SESSION['user_id'])) {
 								(<?php echo $minutes; ?>m <?php echo $seconds; ?>s)
 								</li>
 							<?php endif; ?>
-							<li><a href="#" style="color: black"><span class="fa fa-user-alt"></span></a></li>
 						</ul>
                     <div class="option-list">
                         <!-- Cart Button -->
@@ -149,31 +146,11 @@ if (isset($_SESSION['user_id'])) {
                             </div>
 
                             <div class="collapse navbar-collapse clearfix" id="navbarSupportedContent">
-                                <ul class="navigation clearfix">
-                                    <li class="current dropdown"><a href="#">Home</a>
-                                        <ul>
-                                            <li><a href="index-2.php">Home Page 01</a></li>
-                                            <li class="dropdown"><a href="#">Other</a>
-                                                <ul>
-                                                    <li><a href="#">Sub Menu01</a></li>
-                                                    <li><a href="#">Sub Menu02</a></li>
-                                                    <li><a href="#">Sub Menu03</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-
-
+                            <ul class="navigation clearfix">
+                                    <li class="current"><a href="index-2.php">Home</a></li>
                                     <li><a href="gallery.php">Gallery</a></li>
-
-                                    <li class="dropdown"><a href="#">User</a>
-                                        <ul>
-                                            <li><a href="login.php">Login</a></li>
-                                            <li><a href="registration.php">Register</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="about.php">About Us</a></li>
-                                    <li><a href="contact.php">Contact</a></li>
+                                    <li><a href="shoping-cart.php">Cart</a></li>
+                                    <li><a href="handlers/logout_handler.php">Logout</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -192,65 +169,45 @@ if (isset($_SESSION['user_id'])) {
         </div>
         <!--End Header Upper-->
 
-        <!--Sticky Header-->
-        <div class="sticky-header">
-            <div class="auto-container clearfix">
-                <!--Logo-->
-                <div class="logo pull-left">
-                    <a href="index-2.php" class="img-responsive"><img src="assets/images/logo-02.png" alt=""
-                                                                       title="" height="90" width="90" style="margin-top: -10px;"></a>
-                </div>
+            <!--Sticky Header-->
+            <div class="sticky-header">
+                <div class="auto-container clearfix">
+                    <!--Logo-->
+                    <div class="logo pull-left">
+                        <a href="index-2.php" class="img-responsive"><img src="assets/images/logo-02.png" alt=""
+                                title="" height="90" width="90" style="margin-top: -10px;"></a>
+                    </div>
 
-                <!--Right Col-->
-                <div class="right-col pull-right">
-                    <!-- Main Menu -->
-                    <nav class="main-menu navbar-expand-md">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    <!--Right Col-->
+                    <div class="right-col pull-right">
+                        <!-- Main Menu -->
+                        <nav class="main-menu navbar-expand-md">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1"
                                 aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
 
-                        <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
-                            <ul class="navigation clearfix">
-                                <li class="current dropdown"><a href="#">Home</a>
-                                    <ul>
-                                        <li><a href="index-2.php">Home Page 01</a></li>
-                                        <li class="dropdown"><a href="#">Other</a>
-                                            <ul>
-                                                <li><a href="#">Sub Menu01</a></li>
-                                                <li><a href="#">Sub Menu02</a></li>
-                                                <li><a href="#">Sub Menu03</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
+                            <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
+                                <ul class="navigation clearfix">
+                                    <li class="current"><a href="index-2.php">Home</a></li>
+                                    <li><a href="gallery.php">Gallery</a></li>
+                                    <li><a href="shoping-cart.php">Cart</a></li>
+                                    <li><a href="handlers/logout_handler.php">Logout</a></li>
+                                </ul>
+                            </div>
+                        </nav><!-- Main Menu End-->
+                    </div>
 
-
-                                <li><a href="gallery.php">Gallery</a></li>
-
-                                <li class="dropdown"><a href="#">User</a>
-                                    <ul>
-                                        <li><a href="shops.php">Login</a></li>
-                                        <li><a href="shop-single.php">Register</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="about.php">About Us</a></li>
-                                <li><a href="contact.php">Contact</a></li>
-                            </ul>
-                        </div>
-                    </nav><!-- Main Menu End-->
                 </div>
-
             </div>
-        </div>
-        <!--End Sticky Header-->
+            <!--End Sticky Header-->
 
-    </header>
-    <!-- End Main Header -->
-    <!-- End Main Header -->
+        </header>
+        <!-- End Main Header -->
+        <!-- End Main Header -->
         <!-- End Main Header -->
 
         <!-- Page Title -->
@@ -259,7 +216,6 @@ if (isset($_SESSION['user_id'])) {
                 <h1>Product Details</h1>
                 <ul class="bread-crumb clearfix">
                     <li><a href="index-2.php">Home</a></li>
-                    <li><a href="shop.php">Shop</a></li>
                     <li>Product Details</li>
                 </ul>
             </div>
@@ -579,68 +535,69 @@ if (isset($_SESSION['user_id'])) {
 
         <!--Main Footer-->
         <footer class="main-footer" style="background-image: url(assets/images/background/4.png)">
-			<div class="auto-container">
+            <div class="auto-container">
 
-				<!-- Widgets Section -->
-				<div class="widgets-section">
-					<div class="row clearfix">
+                <!-- Widgets Section -->
+                <div class="widgets-section">
+                    <div class="row clearfix">
 
-						<!-- Footer Column -->
-						<div class="footer-column col-lg-3 col-md-6 col-sm-12">
-							<!-- Info Widget -->
-							<div class="footer-widget info-widget">
-								<h4>Contact Info</h4>
-								<a class="number" href="tel:1800-123-4567">(1800) 123 4567</a>
-								<ul class="email-list">
-									<li><a href="mailto:contact@abc.co.in">contact@abc.co.in</a></li>
-									<li><a href="mailto:contact@abc.co.in">contact@abc.co.in</a></li>
-								</ul>
-							</div>
-						</div>
+                        <!-- Footer Column -->
+                        <div class="footer-column col-lg-3 col-md-6 col-sm-12">
+                            <!-- Info Widget -->
+                            <div class="footer-widget info-widget">
+                                <h4>Contact Info</h4>
+                                <a class="number" href="tel:1800-123-4567">(1800) 123 4567</a>
+                                <ul class="email-list">
+                                    <li><a href="mailto:contact@abc.co.in">contact@abc.co.in</a></li>
+                                    <li><a href="mailto:contact@abc.co.in">contact@abc.co.in</a></li>
+                                </ul>
+                            </div>
+                        </div>
 
-						<!-- Footer Column -->
-						<div class="footer-column col-lg-6 col-md-12 col-sm-12">
-							<!-- Logo Widget -->
-							<div class="footer-widget logo-widget">
-								<div class="logo">
-									<a href="index-2.php"><img src="assets/images/logo-02.png" alt="" style="margin-top: -20px;" /></a>
-								</div>
-								<div class="text">Food Plaza <br> 336, abc Street,<br> Rajkot, 360004
-								</div>
-							</div>
-						</div>
+                        <!-- Footer Column -->
+                        <div class="footer-column col-lg-6 col-md-12 col-sm-12">
+                            <!-- Logo Widget -->
+                            <div class="footer-widget logo-widget">
+                                <div class="logo">
+                                    <a href="index-2.php"><img src="assets/images/logo-02.png" alt=""
+                                            style="margin-top: -20px;" /></a>
+                                </div>
+                                <div class="text">Food Plaza <br> 336, abc Street,<br> Rajkot, 360004
+                                </div>
+                            </div>
+                        </div>
 
-						<!-- Footer Column -->
-						<div class="footer-column col-lg-3 col-md-6 col-sm-12">
-							<!-- Info Widget -->
-							<div class="footer-widget timing-widget">
-								<h4>Opening Hour</h4>
-								<ul class="timing-list">
-									<li>Tuesday- Saturday <span>10 AM – 9 PM</span></li>
-									<li>Sunday <span>Off</span></li>
-								</ul>
-							</div>
-						</div>
+                        <!-- Footer Column -->
+                        <div class="footer-column col-lg-3 col-md-6 col-sm-12">
+                            <!-- Info Widget -->
+                            <div class="footer-widget timing-widget">
+                                <h4>Opening Hour</h4>
+                                <ul class="timing-list">
+                                    <li>Tuesday- Saturday <span>10 AM – 9 PM</span></li>
+                                    <li>Sunday <span>Off</span></li>
+                                </ul>
+                            </div>
+                        </div>
 
-					</div>
-				</div>
+                    </div>
+                </div>
 
-				<!-- Footer Bottom -->
-
-
-			</div>
-
-			<div class="footer-bottom text-center" style="background-color: #eec300; color:black">
-				<div class="clearfix text-center">
-					<div class="text-center">
-						<div class="copyright text-center" style="color:black">&copy; Copyright 2020. All right
-							reserved.</div>
-					</div>
-				</div>
-			</div>
+                <!-- Footer Bottom -->
 
 
-		</footer>
+            </div>
+
+            <div class="footer-bottom text-center" style="background-color: #eec300; color:black">
+                <div class="clearfix text-center">
+                    <div class="text-center">
+                        <div class="copyright text-center" style="color:black">&copy; Copyright 2020. All right
+                            reserved.</div>
+                    </div>
+                </div>
+            </div>
+
+
+        </footer>
 
     </div>
     <!--End pagewrapper-->
@@ -696,4 +653,5 @@ if (isset($_SESSION['user_id'])) {
 
 
 <!-- Mirrored from designarc.biz/demos/wengdo/shop-single.php by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Dec 2021 09:10:25 GMT -->
+
 </html>
